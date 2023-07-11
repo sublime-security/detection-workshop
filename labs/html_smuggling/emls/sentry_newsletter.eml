@@ -1,0 +1,851 @@
+Delivered-To: jon@twitterreboot.com
+Received: by 2002:a05:7000:8002:b0:4c4:30e8:7a6a with SMTP id l2csp399617maf;
+        Thu, 27 Apr 2023 06:36:21 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4gcuohE6TLxt1/tT1fvzGbQCduDFSZswT/kIBVZdz+P3n9/vvwxh3FdVaWqsGwNq1hYahH
+X-Received: by 2002:a05:6214:628:b0:5f7:a9e1:bbbf with SMTP id a8-20020a056214062800b005f7a9e1bbbfmr1999728qvx.44.1682602580816;
+        Thu, 27 Apr 2023 06:36:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682602580; cv=none;
+        d=google.com; s=arc-20160816;
+        b=BdE+DsPUnKMGfxS93p+OjI1Zwp6mKAWYSsme3LLH66+sJFuXPVrn5OU5WN3RxpAhVr
+         bSkiK8eiYvosL4JSoGY86B64/Ok9lO3MA6hm+u8u9F08jdnvNrpjxL3AsuUx09tsQKRe
+         dU6CN4Q47o7HFNXNCibMBk/O2oqfKOy7uo4CjzJ764KqwNT/Au0IC9ehToJ1WeHHU7gi
+         3U20XvUuenMt6ZBZQ/tth3gIrg3BoklYCAuo3eqEwrhRL/OmloUIgBGu0etT82YcmByU
+         ROJ7ncD1QggeohM0j5UlUEEBqyA4NXav99KH2pplspZmiUfKuf1ckFxVqFbfy0ZCOrNs
+         fwww==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:mime-version:subject:message-id:to:reply-to:from
+         :date:dkim-signature:dkim-signature;
+        bh=+FHPwQwub82MTrwGwia1y99v4blU0aCIVcoO4Jk4kqg=;
+        b=Y6CxUwxWfBOQ0MjRHcwiRU2cRVoT8U4lcikebuFAtalaJgzNLhIvXWSeXioFKZbGmT
+         3eoj+IvLhwtDZGr+5gHTecKupkqKnkCrrJsShwYCQKDAOiZsMVNKzp0EKpqmx3/NCJsD
+         +AwYb9VaqdwQaqCQNO7oX+uYXozwlT9hC3QbKS97P4WtI/RQkkJqZ9RYr2u0iBAu9tKn
+         MQygtkXRwWiUc8EnWnG1idT+rVG0RzjnrAf7oO9EP3LUXwn+n7TERJHbOeK5pgvJs+C9
+         nuFX3lkDqJPb0MvSKdxYH5y/U5btI6jBOH9Hal3Tc/DpU5MsfGqCJYg8okSif+erSHxZ
+         9piw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@sentry.io header.s=m2 header.b=Zr0u757T;
+       dkim=pass header.i=@mktdns.com header.s=m1 header.b=WhXoPU75;
+       spf=pass (google.com: domain of 776-mjn-501.0.23596.0.0.4500.9.14184589@bounce.sentry.io designates 192.28.151.14 as permitted sender) smtp.mailfrom=776-MJN-501.0.23596.0.0.4500.9.14184589@bounce.sentry.io;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sentry.io
+Return-Path: <776-MJN-501.0.23596.0.0.4500.9.14184589@bounce.sentry.io>
+Received: from bounce.sentry.io (bounce.sentry.io. [192.28.151.14])
+        by mx.google.com with ESMTPS id de44-20020a05620a372c00b0074e3362675asi11166781qkb.171.2023.04.27.06.36.20
+        for <jon@twitterreboot.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 27 Apr 2023 06:36:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 776-mjn-501.0.23596.0.0.4500.9.14184589@bounce.sentry.io designates 192.28.151.14 as permitted sender) client-ip=192.28.151.14;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@sentry.io header.s=m2 header.b=Zr0u757T;
+       dkim=pass header.i=@mktdns.com header.s=m1 header.b=WhXoPU75;
+       spf=pass (google.com: domain of 776-mjn-501.0.23596.0.0.4500.9.14184589@bounce.sentry.io designates 192.28.151.14 as permitted sender) smtp.mailfrom=776-MJN-501.0.23596.0.0.4500.9.14184589@bounce.sentry.io;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sentry.io
+X-MSFBL: LNtQOXxhmFx+fnw1LU3Y71Q5GjF+rr9ZVyXVU8cgcTM=|eyJnIjoiYmctYWJkLTQ
+	5MyIsInUiOiI3NzYtTUpOLTUwMTowOjQxNjY6MTQyNDM6NTg1ODQ6NDUwMDo5OjI
+	zNTk2OjE0MTg0NTg5IiwiciI6ImpvbkB0d2l0dGVycmVib290LmNvbSIsImIiOiJ
+	kdnAtMTkyLTI4LTE1MS0xNCJ9
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1682602578;
+	s=m2; d=sentry.io; i=@sentry.io;
+	h=Content-Type:MIME-Version:Subject:To:From:Date;
+	bh=+FHPwQwub82MTrwGwia1y99v4blU0aCIVcoO4Jk4kqg=;
+	b=Zr0u757TtTkn/TzlqneMeMYlFgQvZNwJdoda1YQ7yakTQVE/zcvB95Ajq8yUyy0X
+	WYo6v9tEPlXpWtUa1d/P2/oubpcCfFC0a3agA1m4YcUZuXxTLGpiFDlgo8UrKsziJT5
+	LalH0Y8g989tZcXVlo6tWEhnmVlKBlLDq1VT21F4=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1682602578;
+	s=m1; d=mktdns.com; i=@mktdns.com;
+	h=Content-Type:MIME-Version:Subject:To:From:Date;
+	bh=+FHPwQwub82MTrwGwia1y99v4blU0aCIVcoO4Jk4kqg=;
+	b=WhXoPU75cYAW5M9/7mBtwqGKsx30aIfGOxGyAczgNYH9T8uMeKH/bUzHHkiA6qU6
+	5LM2TC+FQAyNN0TVwgZ7qcui9myHsqcO2yKdyoKFNAmNqiekuMBBevX7dbsqo7hJkgh
+	6I7TJt5cOvspo4f/4PHjQrVXd5z7Pl3ajfNDje28=
+Date: Thu, 27 Apr 2023 08:36:18 -0500 (CDT)
+From: Sentry Newsletter <learn@sentry.io>
+Reply-To: learn@sentry.io
+To: jon@twitterreboot.com
+Message-ID: <2134612251.225074965.1682602578524@abmktmail-batch1a.marketo.org>
+Subject: [April] Spend Allocation, Events Galore, and the Changelog
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_225074963_2146224207.1682602578523"
+X-Binding: bg-abd-493
+X-MarketoID: 776-MJN-501:0:4166:14243:58584:4500:9:23596:14184589
+X-Mailfrom: 776-MJN-501.0.23596.0.0.4500.9.14184589@bounce.sentry.io
+List-Unsubscribe: <mailto:IJUECNSQMNFHIULKGREDQ3TYKY2TOTLWK5TT2PI=.23596.4500.9@unsub-ab.mktomail.com>
+X-MktArchive: false
+X-MSYS-API: {"options":{"open_tracking":false,"click_tracking":false}}
+X-MktMailDKIM: true
+
+------=_Part_225074963_2146224207.1682602578523
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Are you ready for a triple dose of excitement? Buckle up and grab that=C2=
+=A0triple Americano, because=C2=A0we have some thrilling updates that will =
+leave you absolutely... well, mildly intrigued.
+
+From=C2=A0the new Spend Allocation feature release, Spike Protection, and t=
+he Changelog, Twitter Reboot=C2=A0is in for some pleasant updates.=C2=A0We =
+promise.
+
+Oh we almost forgot - we=C2=A0have a new engineering specific blog <https:/=
+/go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVauBxadiugJbc8DCQCawLLfWra73Hi=
+ir44Gvcpxbgy_aXR35kJtZMYABuu5JggtJefc=3D>=C2=A0- learn about Sentry's engin=
+eering efforts, company culture, product developments and more.
+
+Read on for more details below=C2=A0- if you're not as excited as we are, w=
+ell, we'll just assume you're too busy basking in the glory of your high co=
+de coverage to care <https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVh=
+LDIZFJrO21JyK1J2R93wttKisrMj6XnIL4ZjZdokAtTR47DDRvttaR2Fxr72o6xos=3D>.
+When all of your Sentry projects share the same event pool across your orga=
+nization, it can be easy for one or two noisy projects to consume all your =
+events while leaving other projects high and dry for the remainder of the m=
+onth. To prevent this, we=E2=80=99ve recently released Spend Allocation to =
+let you allocate volumes of your reserved errors, transactions, and attachm=
+ents to specific projects. Now there=E2=80=99s no more resource guarding be=
+tween teams (arm wrestling for transactions?) or drops in visibility for cr=
+itical projects. Learn more on our blog <https://go.sentry.marketing/Nzc2LU=
+1KTi01MDEAAAGLYeaCViTz38wUr4iIZ87uJGf0lVEV0bR0ZG7_HFqO81W-7Fa4tqIekeTSCNtlo=
+EgYS7csrJg=3D> or GitHub discussion <https://go.sentry.marketing/Nzc2LU1KTi=
+01MDEAAAGLYeaCVfaAluABOTAMA6zcuU9WD_fsbyHJF-t-pdJhOCeNA4-OHC4TX7kQZNZWbOGM_=
+XruN_M=3D>.
+JavaScript Loader 2.0: Enabling Performance & Replay
+
+The JavaScript Loader now comes with Performance Monitoring and Replay out =
+of the box. The JavaScript Loader is an alternative way to use our JavaScri=
+pt SDK where you can toggle features you want in Project Settings and paste=
+ a <script/> in your website. This helps save you time configuring your pro=
+ject and auto-updates your SDK. Learn more <https://go.sentry.marketing/Nzc=
+2LU1KTi01MDEAAAGLYeaCVgIBLHSnkdoVBNnbi0huAq0jCatep5Cr9s6itQ9oT78PpwaQ-lfkuM=
+ai5Rn5vbcoFLY=3D>.
+
+
+Session Replay:=C2=A0Search by user click
+
+Search by user click is an advanced filtering capability that allows you to=
+ search for replays by DOM element, or in other words where users have clic=
+ked to interact with specific parts of your web app, on the Replays index p=
+age. Learn more <https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVfxuyT=
+Y5x6EsctyUly7uIS6AZSm8Bpi7WARD7QtYaCOQnVSRmDIh9Jaaf_Xm7z6fVBU=3D>.
+
+Spend Allocation (new!) and updates to Spike Protection
+
+To help ensure noisy projects don=E2=80=99t eat through your event quota, w=
+e=E2=80=99ve recently launched Spend Allocation and updated Spike Protectio=
+n. Now it=E2=80=99s much easier for you to manage multiple projects and tea=
+ms with different levels of event consumption without burning through your =
+quota. Learn more <https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCViTz=
+38wUr4iIZ87uJGf0lVEV0bR0ZG7_HFqO81W-7Fa4tqIekeTSCNtloEgYS7csrJg=3D>.
+
+Cron Monitoring: Multiple Environments
+
+Cron Monitoring=C2=A0now supports multiple environments. Previously, monito=
+rs contained a single status and check-in schedule. Now, monitors can exist=
+ in multiple environments with decoupled statuses and check-ins. This means=
+ you can now set up monitor notifications for failed or missed check-ins fo=
+r specific environments. Learn more <https://go.sentry.marketing/Nzc2LU1KTi=
+01MDEAAAGLYeaCVVu8q6nTBRk6mT1OcXgz58HS0IhS89l9PgmNVe1SfklbQkakT2D4OGXXXjLPF=
+dqpuL4=3D>.
+
+
+Flutter SDK v7
+
+The latest version of our Flutter SDK comes with loads of new features. To =
+start, it=E2=80=99s compatible with Dart 3, supports failedRequestTargets f=
+or HTTP Client errors, and provides screenshot control resolution. Learn mo=
+re <https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVfnPXBQAYpb-FDNzLSH=
+mK-vu1L1w32NG-1paRV_txIHV85H54abQLtLm8LO-u51oj0g=3D>.
+GitHub recently launched Deployment Protection Rules <https://go.sentry.mar=
+keting/Nzc2LU1KTi01MDEAAAGLYeaCVqDEAcHFJcSd1H8-kJLvn0NA8plwQm2y2eB0j0rrSQpP=
+Ec8cq_cD4sDOjGfVOmw6_W4=3D>, which allow users to set up custom rules to co=
+ntrol deployment workflows. With the Sentry GitHub Deployment Gate integrat=
+ion, you can now use Sentry's monitoring insights in your deployment pipeli=
+nes to automatically spot errors and revert bad roll outs. Learn more <http=
+s://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVaeVlIgonCbwjFTucvKaDQKDbd0=
+Hef1FdIFxkpVSkilCtfZ6DzQ_sxi71eitDyoLqig=3D>.
+Need some excitement in your life?=C2=A0
+
+Stream our library of how-tos <https://go.sentry.marketing/Nzc2LU1KTi01MDEA=
+AAGLYeaCVmmlXaRbHApHaXc66uzWkES1hJAFiwCOFSZ196pfxm0qP38j-mPQBh--gW0GQ1FF630=
+=3D>, tutorials <https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVbAQHn=
+nkB1EppdckBcmqzwtbdhDzyaOTcNASdXP_bADVp1d_61WVRofK_ub79uVvaKg=3D>, and work=
+shop videos <https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVm_g_PPrgJ=
+QBz3X59-HZTue8AKDZymqKE7xIzRwAXLYFCBCBaLnJ86_Ul1vzJ7EzvtQ=3D> on YouTube.
+
+Upcoming Events:
+
+
+=09- April=C2=A030 - May 2: Deep Dish Swift <https://go.sentry.marketing/Nz=
+c2LU1KTi01MDEAAAGLYeaCVr_j1VGaJEn9HmrMeCQuaXn7568E-Nyk9UgMBZCOR2R4s-8QFXA27=
+8WaCi_9rXRk9ns=3D> @ Chicaco, IL
+=09- May 9 - 11: RemixConf <https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAG=
+LYeaCVgPOxogv_ULPvS1QOZtU_uhHWUDhek5sjJ1nWa13fWyWVdohegdix8vUslDNyttxOmY=3D=
+>=C2=A0@ Salt Lake City, UT
+
+=09- May 10: SF Python Meetup <https://go.sentry.marketing/Nzc2LU1KTi01MDEA=
+AAGLYeaCVuVcGh7L7Z-eCMsu_hWxuPdUSOgPeXL00heq1NiXDay0vvc8MlcnAnU0lhtkJ3aOzPQ=
+=3D> @ Sentry HQ
+=09- May 11: Profiling AMA <https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAG=
+LYeaCVQS5G_3HcvUvH20HFTrPaiGLA9Ws2W3xgx9jL92yWw1mxM76NYMzxSkz0QikWBLvuyY=3D=
+> (virtual)
+=09- May 12: Vue.JS <https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVb=
+TLniwynWpR0dN8UrtICO-ck0BDQvSnguOG9VYLZ6FYRbFfn8EByjs7ynA27DoKovo=3D> Live =
+@ London, UK + virtual
+=09- May 15 - 16: CTO Connection <https://go.sentry.marketing/Nzc2LU1KTi01M=
+DEAAAGLYeaCVZF7krFBcj8Hh5NM629HxJoEN4R-RIQfqlUd0g201FTgPK5QfYzUdHv-LHMNi0go=
+Skw=3D> @ San Francisco, CA
+
+=09- May 17 - 19: Chain React <https://go.sentry.marketing/Nzc2LU1KTi01MDEA=
+AAGLYeaCVrgw-TB5_ZfBXqZD1YfvpO9Z1AoL9WN5Xt_23M7o7XP3Aa-k6K9nRw75o8Jqwgyo4YE=
+=3D> @ Portland, OR
+
+=09- May 22 - 26: NDC Oslo <https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAG=
+LYeaCVkb14xJudyRFfypRDTgW85ykwor_riqyUfKvrlhoM9LhdUwNBZjuvGAKtlFxB46NRfI=3D=
+>=C2=A0@ Oslo, Norway
+=09- May 23: AndroidHeads Meetup <https://go.sentry.marketing/Nzc2LU1KTi01M=
+DEAAAGLYeaCVfAPBRxV0kXeAwKQBQifKPYhx2ryBFaZcMeUCrLbxGvE6aUMkRp_rzNK_KSfo4V4=
+Y68=3D>=C2=A0@ Sentry VIE office
+=09- May 25 - 26: VueConf US <https://go.sentry.marketing/Nzc2LU1KTi01MDEAA=
+AGLYeaCVpDqLGK9inlNdEsmTlYRiQxrBFlVJIJXOUmsiIAi1JzsToD0f5BRUiI5EPYNnEYLz9g=
+=3D>=C2=A0@ New Orleans, LA
+=09- May 25 - 28: PyCon Italia <https://go.sentry.marketing/Nzc2LU1KTi01MDE=
+AAAGLYeaCVo6oRY7qEYvA54IpF4bN0ZpwdqlA648biUN-gJ9Ze-CmaUdVen3bSFkysZtC9RYGW9=
+o=3D>=C2=A0@ Florence, Italy
+
+
+
+On-demand:
+
+
+=09- A new approach to Performance <https://go.sentry.marketing/Nzc2LU1KTi0=
+1MDEAAAGLYeaCVi0Apq47rqVQTv7L3ZSrKLJge1Bab06bVG0bHgiATXW_Efw3jQdWNJjPu9bRN1=
+ZfzI8=3D>: How Tilled keeps their endpoints fast and their developers Sane
+
+=09- Code Reliability AMA <https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGL=
+YeaCVbBwieWSrvywoniTSDpwzHWLroyGNvCoDpuih7zZ2vWObp5NYQskNMuaZYJ6TtGTiU8=3D>=
+: Achieving code reliability across the release cycle
+
+
+
+
+Contributed Blogs and Videos:
+
+
+=09- Check out our=C2=A0new engineering blog <https://go.sentry.marketing/N=
+zc2LU1KTi01MDEAAAGLYeaCVauBxadiugJbc8DCQCawLLfWra73Hiir44Gvcpxbgy_aXR35kJtZ=
+MYABuu5JggtJefc=3D>, which dives deeper into the technical elements of our =
+products, like Self Identifying JavaScript Source Maps <https://go.sentry.m=
+arketing/Nzc2LU1KTi01MDEAAAGLYeaCVQHX_NPeU8b0K1h4cN5EWiy9CW-3rv0_GoxW7IpN8i=
+vtl5ji9H7L5MzsJHOU2oeFw8s=3D> and How we reduced CI time by 35% with Nx Cac=
+hing <https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVTBvgflE0_Bqu0UhR=
+Zy82D-_kd6QIiadRWG7BShkhr0rJxnIdfBeJXJulTy-y9y5p-Q=3D>. We still have our m=
+ain blog <https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVmaupJem-i2DG=
+P67eo3ri2CSv4dlCNQs-QES2QKrCc5ft3aHbEuMfZQGX7a3XBeuME8=3D>, where we will c=
+ontinue to publish stories of broader interest, like our new partnership wi=
+th Syntax <https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVgo5UsP0s-pc=
+3SIFhYurBQVpbG5ObgQXzGPAG-CPhqV_9ViL-sir10W1ocr6yaqRiOI=3D>.
+=09- Announcing: GitHub Actions Deployment Protection Rules <https://go.sen=
+try.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVmi4Jysi6HhCaT0WYrHLOhLKCGTEi5DBATQ5t=
+eJyMasUB1VlkkL-dCFJfAqvBeI0Vbs=3D>
+
+
+
+Interested in contributing to the Sentry blog <https://go.sentry.marketing/=
+Nzc2LU1KTi01MDEAAAGLYeaCVmaupJem-i2DGP67eo3ri2CSv4dlCNQs-QES2QKrCc5ft3aHbEu=
+MfZQGX7a3XBeuME8=3D>=C2=A0or YouTube Channel <https://go.sentry.marketing/N=
+zc2LU1KTi01MDEAAAGLYeaCVXDXGqFobVHoQWgni2RLcx-7wLrnNZIFTC7GNEEQx-qZFAtNqjEn=
+ubXuC4kCz3LrACk=3D>? Drop us a line here <https://go.sentry.marketing/Nzc2L=
+U1KTi01MDEAAAGLYeaCVZXfnhENpMRxOjRvmJHP2pI0OGJ1-yaRwA1xU17bPLTt8qqPQDoMpi-V=
+gyplzmrqwwI=3D>.
+- iOS/Cocoa SDK 8.5.0 <https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaC=
+VrDsiZu3xvngovbJe7VEq4Jfqht7xLRyDasZhB19wX5bQ8xB-cU58Yx1H1grXzR89Rg=3D> =09=
+- React Native SDK 5.3.1 <https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLY=
+eaCVnDlPCnrZITAOU7oSEc-gXE9bXdoyr0co30-F6ElI2CVghmEdLkRtTcHYuNz_WxgKnQ=3D> =
+=09- Flutter/Dart SDK 7.4.2 <https://go.sentry.marketing/Nzc2LU1KTi01MDEAAA=
+GLYeaCVuwdpOQiMmYM2O0v_5f2UKaYTuZgK_uHJj0vYFnMI8xZiMpBRIPqSs1Uszn8PUNsxaA=
+=3D> =09- .NET SDK 3.30.0 <https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGL=
+YeaCVbx2WtiyUXil7fXPLUOunQZkCqZ_YFV8qUnbnpOTKH16xBnMZSyCdeLVmqirw4CXGqI=3D>=
+ =09- Unity SDK 1.2.0 <https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaC=
+VfgzBx-QX2q6svc87_oMNJw_fd8DReadSA_LGE1_oBs-22T-JGAEHfa3XiTKZmZsK9g=3D> =09=
+- Kotlin Multiplatform 0.1.1 <https://go.sentry.marketing/Nzc2LU1KTi01MDEAA=
+AGLYeaCVWQ2GVCE0bcX5sb8Oy2qf9UZoiTmgVoiQAjFwvEJ7ho2bJQo8XvH0dyGJH-gZOUcbag=
+=3D>
+
+This email was sent to jon@twitterreboot.com. If you no longer wish to rece=
+ive these emails you may unsubscribe here: https://www.sentry.marketing/Uns=
+ubscribePage.html?mkt_unsubscribe=3D1&mkt_tok=3DNzc2LU1KTi01MDEAAAGLYeaCVqX=
+vuzGZOGGIO6X5VpHApureQCRi4N6EyDYT_bjbuWAfugJL_WuYwbDHs6IyAVhiAZ-mlco_1io8LR=
+Ia-i5wiqAAD2HV-mI2fLktxkA.
+
+------=_Part_225074963_2146224207.1682602578523
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html>
+<html lang=3D"en" style=3D"
+    min-height: 100vh;
+    font-family: 'Rubik', Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+  ">
+<head>=20
+<meta charset=3D"UTF-8">=20
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">=20
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1.=
+0">=20
+<title>Document</title>                                                    =
+                         =20
+<style type=3D"text/css">
+      a,
+      a[href] {
+        color: #e1557c;
+      }
+
+      u + #body a {
+        color: #e1557c;
+        font-size: inherit;
+        font-family: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 600;
+        margin: 1rem 0;
+      }
+
+      p {
+        line-height: 1.5;
+        margin: 0 0 1em;
+      }
+
+      img {
+        margin: 0 0 1rem;
+        width: 100%;
+      }
+    </style>=20
+</head>=20
+<body id=3D"body" style=3D"
+      background-color: #f0eef3;
+      min-height: 100%;
+      margin: 0;
+      padding: 1rem 0.25rem 2rem;
+      background-image: url('https://storage.googleapis.com/sentryio-assets=
+/img/email/proof-marks-bg-pattern%20.png');
+    "><style type=3D"text/css">div#emailPreHeader{ display: none !important=
+; }</style><div id=3D"emailPreHeader" style=3D"mso-hide:all; visibility:hid=
+den; opacity:0; color:transparent; mso-line-height-rule:exactly; line-heigh=
+t:0; font-size:0px; overflow:hidden; border-width:0; display:none !importan=
+t;">Read on to find out more about Session Replay updates, JS Loader 2.0, a=
+nd Crons: Multiple Environments.</div>=20
+<div id=3D"layout-wrapper-div" style=3D"margin: 0 auto; max-width: 600px">=
+=20
+<div style=3D"background: #584774; padding: 0.5rem 0; text-align: center">=
+=20
+<img src=3D"https://storage.googleapis.com/sentryio-assets/img/email/sentry=
+-wordmark-light-322x96.png" style=3D"max-height: 3rem; width: auto; margin:=
+ 0 auto">=20
+</div>=20
+<div id=3D"content-wrapper-div" style=3D"background: #fff; font-size: 1rem"=
+>=20
+<img id=3D"misprint-monthly-banner" src=3D"https://storage.googleapis.com/s=
+entryio-assets/img/email/newsletter-header-art.png" style=3D"margin: 0 0 1r=
+em; width: 100%; height: auto">=20
+<div id=3D"newsletter-intro" class=3D"mktoText" style=3D"padding: 1.5rem 1.=
+5rem 1rem">
+<p><span style=3D"font-family: arial, helvetica, sans-serif;">Are you ready=
+ for a triple dose of excitement? Buckle up and grab that&nbsp;triple Ameri=
+cano, because&nbsp;we have some thrilling updates that will leave you absol=
+utely... well, mildly intrigued.</span></p>=20
+<p><span style=3D"font-family: arial, helvetica, sans-serif;">From&nbsp;the=
+ new Spend Allocation feature release, Spike Protection, and the Changelog,=
+ Twitter Reboot&nbsp;is in for some pleasant updates.&nbsp;We promise.</spa=
+n></p>=20
+<p><span style=3D"font-family: arial, helvetica, sans-serif;">Oh we almost =
+forgot - we&nbsp;have a new <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVauBxadiugJbc8DCQCawLL=
+fWra73Hiir44Gvcpxbgy_aXR35kJtZMYABuu5JggtJefc=3D" target=3D"_blank" id=3D""
+>engineering specific blog</a>&nbsp;- learn about Sentry's engineering effo=
+rts, company culture, product developments and more.</span></p>=20
+<p><span style=3D"font-family: arial, helvetica, sans-serif;">Read on for m=
+ore details below&nbsp;- if you're not as excited as we are, well, we'll ju=
+st assume you're too busy basking in the glory of your <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVhLDIZFJrO21JyK1J2R93w=
+ttKisrMj6XnIL4ZjZdokAtTR47DDRvttaR2Fxr72o6xos=3D" target=3D"_blank" id=3D""
+>high code coverage to care</a>.</span></p>
+</div>=20
+<table style=3D"width: 100%">=20
+<tbody>=20
+<tr>=20
+<td id=3D"mainContentContainer" class=3D"mktoContainer" style=3D"padding: 0=
+.5rem 1.5rem 1rem; padding-bottom: 0.5rem">
+<table id=3D"product-updates" title=3D"Product Updates" subtitle=3D"Sentry =
+is (probably) better this month." class=3D"mktoModule" style=3D"width: 100%=
+">=20
+<tbody>=20
+<tr>=20
+<td>=20
+<div style=3D"
+                            border-top: 1px dashed #ddd;
+                            width: 100%;
+                            margin-top: 0.5rem;
+                            padding-top: 0.5rem;
+                          ">=20
+<h2 style=3D"font-weight: 600; margin: 1rem 0 1rem"> Product Update of the =
+Month: Spend Allocation </h2>=20
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"image600115d9-191c-4b83-af5b-99811c84c92b" class=3D"mktoModule=
+" style=3D"width: 100%">=20
+<tbody>=20
+<tr>=20
+<td>=20
+<div id=3D"image-imagefce50b24-2f4b-46c3-9c74-caf073021749" class=3D"mktoIm=
+g" mktolockimgsize=3D"true">
+<a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVirm1M_Gz3kS5Q-JvqiZkT=
+esrU0lAwytM-Q6AVfw587-zPGRcGM9UeazYUW1CbNTraY=3D" target=3D"_blank"
+><img src=3D"https://www.sentry.marketing/rs/776-MJN-501/images/spend alloc=
+ation.jpg" alt=3D"Allocate volumes of your reserved errors with Spend Alloc=
+ation" style=3D"margin: 0 0 1rem; width: 100%"></a>
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"might-not-have-noticed-text54ff7b31-847c-4a63-ba0e-10270bc4a4d=
+9" class=3D"mktoModule" style=3D"width: 100%">=20
+<tbody>=20
+<tr>=20
+<td>=20
+<div id=3D"might-not-have-noticed-text-body234ac5b4-3c4a-454c-bb79-90c4ca3c=
+194c" class=3D"mktoText">
+<p>When all of your Sentry projects share the same event pool across your o=
+rganization, it can be easy for one or two noisy projects to consume all yo=
+ur events while leaving other projects high and dry for the remainder of th=
+e month. To prevent this, we=E2=80=99ve recently released Spend Allocation =
+to let you allocate volumes of your reserved errors, transactions, and atta=
+chments to specific projects. Now there=E2=80=99s no more resource guarding=
+ between teams (arm wrestling for transactions?) or drops in visibility for=
+ critical projects. Learn more on our <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCViTz38wUr4iIZ87uJGf0lV=
+EV0bR0ZG7_HFqO81W-7Fa4tqIekeTSCNtloEgYS7csrJg=3D" target=3D"_blank" id=3D""
+>blog</a> or <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVfaAluABOTAMA6zcuU9WD_=
+fsbyHJF-t-pdJhOCeNA4-OHC4TX7kQZNZWbOGM_XruN_M=3D" target=3D"_blank"
+>GitHub discussion</a>.<br></p>
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"product-updatesc0f4da52-f4d2-4cb7-b6f0-8bfb0493a896" title=3D"=
+Product Updates" subtitle=3D"Sentry is (probably) better this month." class=
+=3D"mktoModule" style=3D"width: 100%">=20
+<tbody>=20
+<tr>=20
+<td>=20
+<div style=3D"
+                            border-top: 1px dashed #ddd;
+                            width: 100%;
+                            margin-top: 0.5rem;
+                            padding-top: 0.5rem;
+                          ">=20
+<h2 style=3D"font-weight: 600; margin: 1rem 0 1rem"> Product Updates </h2>=
+=20
+<p style=3D"
+                              line-height: 1.5;
+                              margin: 0 0 1em;
+                              font-style: italic;
+                            "> Sentry is (probably) better this month. </p>=
+=20
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"image6b6868f5-0465-40ed-a15a-321f4bd29cd6" class=3D"mktoModule=
+" style=3D"width: 100%">=20
+<tbody>=20
+<tr>=20
+<td>=20
+<div id=3D"image-imagecc194d4c-b7b0-46e2-8092-b5b881e5edcb" class=3D"mktoIm=
+g" mktolockimgsize=3D"true">
+<a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVjT6URyA_B5Fnu0jHbV9Kd=
+pUfCAPL9t93ZEl1w6Qr_8za_h00hVKJJOtaoj3P2tyrZw=3D" target=3D"_blank"
+><img src=3D"https://www.sentry.marketing/rs/776-MJN-501/images/ReplaySessi=
+on-hero.jpg" alt=3D"Check out Session Replay" style=3D"margin: 0 0 1rem; wi=
+dth: 100%"></a>
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"might-not-have-noticed-text6aef6668-0154-409e-92ef-d3587bd9e3d=
+f" class=3D"mktoModule" style=3D"width: 100%">=20
+<tbody>=20
+<tr>=20
+<td>=20
+<div id=3D"might-not-have-noticed-text-body53ae3faf-8c0c-480f-89e3-289e0a75=
+d894" class=3D"mktoText">
+<p><strong>JavaScript Loader 2.0: Enabling Performance &amp; Replay</strong=
+></p>=20
+<p>The JavaScript Loader now comes with Performance Monitoring and Replay o=
+ut of the box. The JavaScript Loader is an alternative way to use our JavaS=
+cript SDK where you can toggle features you want in Project Settings and pa=
+ste a &lt;script/&gt; in your website. This helps save you time configuring=
+ your project and auto-updates your SDK. <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVgIBLHSnkdoVBNnbi0huAq=
+0jCatep5Cr9s6itQ9oT78PpwaQ-lfkuMai5Rn5vbcoFLY=3D" target=3D"_blank" id=3D""
+>Learn more</a>.<br></p>=20
+<p><strong>Session Replay:&nbsp;Search by user click</strong></p>=20
+<p><span>Search by user click is an advanced filtering capability that allo=
+ws you to search for replays by DOM element, or in other words where users =
+have clicked to interact with specific parts of your web app, on the Replay=
+s index page. <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVfxuyTY5x6EsctyUly7uIS=
+6AZSm8Bpi7WARD7QtYaCOQnVSRmDIh9Jaaf_Xm7z6fVBU=3D" target=3D"_blank"
+>Learn more</a>.</span></p>=20
+<p><strong>Spend Allocation (new!) and updates to Spike Protection</strong>=
+</p>=20
+<p>To help ensure noisy projects don=E2=80=99t eat through your event quota=
+, we=E2=80=99ve recently launched Spend Allocation and updated Spike Protec=
+tion. Now it=E2=80=99s much easier for you to manage multiple projects and =
+teams with different levels of event consumption without burning through yo=
+ur quota. <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCViTz38wUr4iIZ87uJGf0lV=
+EV0bR0ZG7_HFqO81W-7Fa4tqIekeTSCNtloEgYS7csrJg=3D" target=3D"_blank" id=3D""
+>Learn more</a>.</p>=20
+<p><strong>Cron Monitoring: Multiple Environments</strong></p>=20
+<p>Cron Monitoring&nbsp;now supports multiple environments. Previously, mon=
+itors contained a single status and check-in schedule. Now, monitors can ex=
+ist in multiple environments with decoupled statuses and check-ins. This me=
+ans you can now set up monitor notifications for failed or missed check-ins=
+ for specific environments. <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVVu8q6nTBRk6mT1OcXgz58=
+HS0IhS89l9PgmNVe1SfklbQkakT2D4OGXXXjLPFdqpuL4=3D" target=3D"_blank" id=3D""
+>Learn more</a>.<br></p>=20
+<p><strong>Flutter SDK v7</strong></p>=20
+<p>The latest version of our Flutter SDK comes with loads of new features. =
+To start, it=E2=80=99s compatible with Dart 3, supports <span style=3D"font=
+-size: 11pt; font-family: 'Roboto Mono',monospace; color: #222222; backgrou=
+nd-color: #ffffff; font-weight: 400; font-variant: normal; text-decoration:=
+ none; vertical-align: baseline; white-space: pre-wrap;">failedRequestTarge=
+ts</span> for HTTP Client errors, and provides screenshot control resolutio=
+n. <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVfnPXBQAYpb-FDNzLSHmK-=
+vu1L1w32NG-1paRV_txIHV85H54abQLtLm8LO-u51oj0g=3D" target=3D"_blank" id=3D""
+>Learn more</a>.</p>
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"product-updatesf49496aa-b5c3-434e-94b0-06f5c0f1bf49" title=3D"=
+Product Updates" subtitle=3D"Sentry is (probably) better this month." class=
+=3D"mktoModule" style=3D"width: 100%">=20
+<tbody>=20
+<tr>=20
+<td>=20
+<div style=3D"
+                            border-top: 1px dashed #ddd;
+                            width: 100%;
+                            margin-top: 0.5rem;
+                            padding-top: 0.5rem;
+                          ">=20
+<h2 style=3D"font-weight: 600; margin: 1rem 0 1rem"> Integration of the Mon=
+th: Sentry + GitHub </h2>=20
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"image64bfbb63-0fda-4c23-b0bc-9470001b4e9c" class=3D"mktoModule=
+" style=3D"width: 100%">=20
+<tbody>=20
+<tr>=20
+<td>=20
+<div id=3D"image-imageaccc867e-1a29-47c7-b748-829e85d73ff3" class=3D"mktoIm=
+g" mktolockimgsize=3D"true">
+<a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVaeVlIgonCbwjFTucvKaDQ=
+KDbd0Hef1FdIFxkpVSkilCtfZ6DzQ_sxi71eitDyoLqig=3D" target=3D"_blank"
+><img src=3D"https://www.sentry.marketing/rs/776-MJN-501/images/releaseHeal=
+th2-hero.jpg" alt=3D"Introducing the Sentry GitHub Deployment Gate Integrat=
+ion" style=3D"margin: 0 0 1rem; width: 100%"></a>
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"might-not-have-noticed-textca684e4e-caf2-4bcd-b946-42b71b83170=
+f" class=3D"mktoModule" style=3D"width: 100%">=20
+<tbody>=20
+<tr>=20
+<td>=20
+<div id=3D"might-not-have-noticed-text-body0a453cd6-79c8-440a-8263-f55cd14d=
+5c8b" class=3D"mktoText">
+<p>GitHub recently launched <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVqDEAcHFJcSd1H8-kJLvn0=
+NA8plwQm2y2eB0j0rrSQpPEc8cq_cD4sDOjGfVOmw6_W4=3D" target=3D"_blank" id=3D""
+>Deployment Protection Rules</a>, which allow users to set up custom rules =
+to control deployment workflows. With the Sentry GitHub Deployment Gate int=
+egration, you can now use Sentry's monitoring insights in your deployment p=
+ipelines to automatically spot errors and revert bad roll outs. <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVaeVlIgonCbwjFTucvKaDQ=
+KDbd0Hef1FdIFxkpVSkilCtfZ6DzQ_sxi71eitDyoLqig=3D" target=3D"_blank" id=3D""
+>Learn more</a>. <br></p>
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"community-updatesb9fc040c-2dd4-461d-aa2b-ebc7df3f9b37" title=
+=3D"Community Updates" subtitle=3D"What's going on with us, you, and the op=
+en-source community." class=3D"mktoModule" style=3D"width: 100%">=20
+<tbody>=20
+<tr>=20
+<td>=20
+<div style=3D"
+                            border-top: 1px dashed #ddd;
+                            width: 100%;
+                            margin-top: 0.5rem;
+                            padding-top: 0.5rem;
+                          ">=20
+<h2 style=3D"font-weight: 600; margin: 1rem 0 1rem"> Community Updates </h2=
+>=20
+<p style=3D"
+                              line-height: 1.5;
+                              margin: 0 0 1em;
+                              font-style: italic;
+                            "> What's going on with us, you, and the open-s=
+ource community. </p>=20
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"might-not-have-noticed-text8a814e50-9efe-4516-8701-4d4735cafc1=
+a" class=3D"mktoModule" style=3D"width: 100%">=20
+<tbody>=20
+<tr>=20
+<td>=20
+<div id=3D"might-not-have-noticed-text-body8a814e50-9efe-4516-8701-4d4735ca=
+fc1a" class=3D"mktoText">
+<p><strong>Need some excitement in your life?&nbsp;</strong></p>=20
+<p>Stream our library of <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVmmlXaRbHApHaXc66uzWkE=
+S1hJAFiwCOFSZ196pfxm0qP38j-mPQBh--gW0GQ1FF630=3D" target=3D"_blank"
+>how-tos</a>, <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVbAQHnnkB1EppdckBcmqzw=
+tbdhDzyaOTcNASdXP_bADVp1d_61WVRofK_ub79uVvaKg=3D" target=3D"_blank"
+>tutorials</a>, and <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVm_g_PPrgJQBz3X59-HZTu=
+e8AKDZymqKE7xIzRwAXLYFCBCBaLnJ86_Ul1vzJ7EzvtQ=3D" target=3D"_blank"
+>workshop videos</a> on YouTube.</p>=20
+<p><strong>Upcoming Events:</strong></p>=20
+<ul style=3D"line-height: 150%;">=20
+<li style=3D"line-height: 1.5;"><strong>April&nbsp;30 - May 2</strong>: <a =
+href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVr_j1VGaJEn9HmrMeCQuaX=
+n7568E-Nyk9UgMBZCOR2R4s-8QFXA278WaCi_9rXRk9ns=3D" target=3D"_blank" id=3D""
+>Deep Dish Swift</a> @ Chicaco, IL</li>=20
+<li style=3D"line-height: 1.5;"><strong>May 9 - 11</strong>: <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVgPOxogv_ULPvS1QOZtU_u=
+hHWUDhek5sjJ1nWa13fWyWVdohegdix8vUslDNyttxOmY=3D" target=3D"_blank" id=3D""
+>RemixConf</a>&nbsp;@ Salt Lake City, UT<br></li>=20
+<li style=3D"line-height: 1.5;"><strong>May 10</strong>: <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVuVcGh7L7Z-eCMsu_hWxuP=
+dUSOgPeXL00heq1NiXDay0vvc8MlcnAnU0lhtkJ3aOzPQ=3D" target=3D"_blank" id=3D""
+>SF Python Meetup</a> @ Sentry HQ</li>=20
+<li style=3D"line-height: 1.5;"><strong>May 11</strong>: <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVQS5G_3HcvUvH20HFTrPai=
+GLA9Ws2W3xgx9jL92yWw1mxM76NYMzxSkz0QikWBLvuyY=3D" target=3D"_blank" id=3D""
+>Profiling AMA</a> (virtual)</li>=20
+<li style=3D"line-height: 1.5;"><strong>May 12</strong>: <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVbTLniwynWpR0dN8UrtICO=
+-ck0BDQvSnguOG9VYLZ6FYRbFfn8EByjs7ynA27DoKovo=3D" target=3D"_blank" id=3D""
+>Vue.JS</a> Live @ London, UK + virtual</li>=20
+<li style=3D"line-height: 1.5;"><strong>May 15 - 16</strong>: <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVZF7krFBcj8Hh5NM629HxJ=
+oEN4R-RIQfqlUd0g201FTgPK5QfYzUdHv-LHMNi0goSkw=3D" target=3D"_blank" id=3D""
+>CTO Connection</a> @ San Francisco, CA<br></li>=20
+<li style=3D"line-height: 1.5;"><strong>May 17 - 19</strong>: <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVrgw-TB5_ZfBXqZD1YfvpO=
+9Z1AoL9WN5Xt_23M7o7XP3Aa-k6K9nRw75o8Jqwgyo4YE=3D" target=3D"_blank" id=3D""
+>Chain React</a> @ Portland, OR<br></li>=20
+<li style=3D"line-height: 1.5;"><strong>May 22 - 26</strong>: <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVkb14xJudyRFfypRDTgW85=
+ykwor_riqyUfKvrlhoM9LhdUwNBZjuvGAKtlFxB46NRfI=3D" target=3D"_blank" id=3D""
+>NDC Oslo</a>&nbsp;@ Oslo, Norway</li>=20
+<li style=3D"line-height: 1.5;"><strong>May 23</strong>: <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVfAPBRxV0kXeAwKQBQifKP=
+Yhx2ryBFaZcMeUCrLbxGvE6aUMkRp_rzNK_KSfo4V4Y68=3D" target=3D"_blank" id=3D""
+>AndroidHeads Meetup</a>&nbsp;@ Sentry VIE office</li>=20
+<li style=3D"line-height: 1.5;"><strong>May 25 - 26</strong>: <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVpDqLGK9inlNdEsmTlYRiQ=
+xrBFlVJIJXOUmsiIAi1JzsToD0f5BRUiI5EPYNnEYLz9g=3D" target=3D"_blank" id=3D""
+>VueConf US</a>&nbsp;@ New Orleans, LA</li>=20
+<li style=3D"line-height: 1.5;"><strong>May 25 - 28</strong>: <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVo6oRY7qEYvA54IpF4bN0Z=
+pwdqlA648biUN-gJ9Ze-CmaUdVen3bSFkysZtC9RYGW9o=3D" target=3D"_blank" id=3D""
+>PyCon Italia</a>&nbsp;@ Florence, Italy</li>=20
+</ul>=20
+<p><strong>On-demand:</strong></p>=20
+<ul>=20
+<li style=3D"line-height: 1.5;"><a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVi0Apq47rqVQTv7L3ZSrKL=
+Jge1Bab06bVG0bHgiATXW_Efw3jQdWNJjPu9bRN1ZfzI8=3D" target=3D"_blank" id=3D""
+>A new approach to Performance</a>: How Tilled keeps their endpoints fast a=
+nd their developers Sane<br></li>=20
+<li style=3D"line-height: 1.5;"><a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVbBwieWSrvywoniTSDpwzH=
+WLroyGNvCoDpuih7zZ2vWObp5NYQskNMuaZYJ6TtGTiU8=3D" target=3D"_blank" id=3D""
+>Code Reliability AMA</a>: Achieving code reliability across the release cy=
+cle<br></li>=20
+</ul>=20
+<p><strong>Contributed Blogs and Videos:</strong></p>=20
+<ul>=20
+<li style=3D"line-height: 1.5;"><strong>Check out our&nbsp;<a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVauBxadiugJbc8DCQCawLL=
+fWra73Hiir44Gvcpxbgy_aXR35kJtZMYABuu5JggtJefc=3D" target=3D"_blank"
+>new engineering blog</a></strong>, which dives deeper into the technical e=
+lements of our products, like <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVQHX_NPeU8b0K1h4cN5EWi=
+y9CW-3rv0_GoxW7IpN8ivtl5ji9H7L5MzsJHOU2oeFw8s=3D" target=3D"_blank" id=3D""
+>Self Identifying JavaScript Source Maps</a> and <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVTBvgflE0_Bqu0UhRZy82D=
+-_kd6QIiadRWG7BShkhr0rJxnIdfBeJXJulTy-y9y5p-Q=3D" target=3D"_blank" id=3D""
+>How we reduced CI time by 35% with Nx Caching</a>. We still have our <a hr=
+ef=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVmaupJem-i2DGP67eo3ri2=
+CSv4dlCNQs-QES2QKrCc5ft3aHbEuMfZQGX7a3XBeuME8=3D" target=3D"_blank" id=3D""
+>main blog</a>, where we will continue to publish stories of broader intere=
+st, like our new partnership with <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVgo5UsP0s-pc3SIFhYurBQ=
+VpbG5ObgQXzGPAG-CPhqV_9ViL-sir10W1ocr6yaqRiOI=3D" target=3D"_blank" id=3D""
+>Syntax</a>.</li>=20
+<li style=3D"line-height: 1.5;"><strong>Announcing</strong>: <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVmi4Jysi6HhCaT0WYrHLOh=
+LKCGTEi5DBATQ5teJyMasUB1VlkkL-dCFJfAqvBeI0Vbs=3D" target=3D"_blank" id=3D""
+>GitHub Actions Deployment Protection Rules</a></li>=20
+</ul>=20
+<p>Interested in contributing to the Sentry <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVmaupJem-i2DGP67eo3ri2=
+CSv4dlCNQs-QES2QKrCc5ft3aHbEuMfZQGX7a3XBeuME8=3D" target=3D"_blank" id=3D""
+>blog</a>&nbsp;or <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVXDXGqFobVHoQWgni2RLcx=
+-7wLrnNZIFTC7GNEEQx-qZFAtNqjEnubXuC4kCz3LrACk=3D" target=3D"_blank" id=3D""
+>YouTube Channel</a>? Drop us a line <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVZXfnhENpMRxOjRvmJHP2p=
+I0OGJ1-yaRwA1xU17bPLTt8qqPQDoMpi-VgyplzmrqwwI=3D" target=3D"_blank" id=3D""
+>here</a>.</p>
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"changelog10dc5e6c-644c-4105-b263-fe2de607f14d" title=3D"Change=
+log" class=3D"mktoModule" style=3D"width: 100%">=20
+<tbody>=20
+<tr>=20
+<td>=20
+<div style=3D"
+                            border-top: 1px dashed #ddd;
+                            width: 100%;
+                            margin-top: 0.5rem;
+                            padding-top: 0.5rem;
+                          ">=20
+<h2 style=3D"font-weight: 600; margin: 1rem 0 1rem"> Changelog </h2>=20
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table id=3D"might-not-have-noticed-texte622fbe9-7e46-4cbc-9a09-b1822163062=
+9" class=3D"mktoModule" style=3D"width: 100%">=20
+<tbody>=20
+<tr>=20
+<td>=20
+<div id=3D"might-not-have-noticed-text-bodyb4570e24-43d6-4847-b1b0-3ff4d4b4=
+9885" class=3D"mktoText">
+<ul>=20
+<li style=3D"line-height:1.5;"><a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVrDsiZu3xvngovbJe7VEq4=
+Jfqht7xLRyDasZhB19wX5bQ8xB-cU58Yx1H1grXzR89Rg=3D" target=3D"_blank"
+>iOS/Cocoa SDK 8.5.0</a></li>=20
+<li style=3D"line-height:1.5;"><a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVnDlPCnrZITAOU7oSEc-gX=
+E9bXdoyr0co30-F6ElI2CVghmEdLkRtTcHYuNz_WxgKnQ=3D" target=3D"_blank"
+>React Native SDK 5.3.1</a></li>=20
+<li style=3D"line-height:1.5;"><a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVuwdpOQiMmYM2O0v_5f2UK=
+aYTuZgK_uHJj0vYFnMI8xZiMpBRIPqSs1Uszn8PUNsxaA=3D" target=3D"_blank"
+>Flutter/Dart SDK 7.4.2</a></li>=20
+<li style=3D"line-height:1.5;"><a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVbx2WtiyUXil7fXPLUOunQ=
+ZkCqZ_YFV8qUnbnpOTKH16xBnMZSyCdeLVmqirw4CXGqI=3D" target=3D"_blank"
+>.NET SDK 3.30.0</a></li>=20
+<li style=3D"line-height:1.5;"><a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVfgzBx-QX2q6svc87_oMNJ=
+w_fd8DReadSA_LGE1_oBs-22T-JGAEHfa3XiTKZmZsK9g=3D" target=3D"_blank"
+>Unity SDK 1.2.0</a></li>=20
+<li style=3D"line-height:1.5;"><a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVWQ2GVCE0bcX5sb8Oy2qf9=
+UZoiTmgVoiQAjFwvEJ7ho2bJQo8XvH0dyGJH-gZOUcbag=3D" target=3D"_blank" id=3D""
+>Kotlin Multiplatform 0.1.1</a></li>=20
+</ul>
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table></td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+<div id=3D"hiring-blurb" style=3D"
+            padding: 1rem 0 0;
+            margin: 0 1.5rem 2rem;
+          =20
+            border-top: 1px dashed #584774;
+            text-align: center;
+          ">=20
+<p style=3D"line-height: 1.5; margin: 0 0 1em"> By the way, <a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVhJRlM8TTrHTFp4sby82mx=
+Fw-hEMVAItwLcdQYOOf_AQDxRgm7HwVI8dxC0O8W8xVO0=3D" style=3D"color: #e1557c"
+>we're hiring</a> for a lot of roles.</p>=20
+<br>=20
+</div>=20
+</div>=20
+</div>=20
+<style data-ignore-inlining>@media (prefers-color-scheme: dark) { #_t::befo=
+re {content:url('https://7bfahyka.emltrk.com/v2/7bfahyka?rd&i=3D14184589&t=
+=3Dnewsletter-april');}} @media (prefers-color-scheme: light) { #_t::before=
+ {content:url('https://7bfahyka.emltrk.com/v2/7bfahyka?rl&i=3D14184589&t=3D=
+newsletter-april');}} @media print{ #_t {background-image:url('https://7bfa=
+hyka.emltrk.com/v2/7bfahyka?p&i=3D14184589&t=3Dnewsletter-april');}} div.Ou=
+tlookMessageHeader {background-image:url('https://7bfahyka.emltrk.com/v2/7b=
+fahyka?f&i=3D14184589&t=3Dnewsletter-april')} table.moz-email-headers-table=
+ {background-image:url('https://7bfahyka.emltrk.com/v2/7bfahyka?f&i=3D14184=
+589&t=3Dnewsletter-april')} blockquote #_t {background-image:url('https://7=
+bfahyka.emltrk.com/v2/7bfahyka?f&i=3D14184589&t=3Dnewsletter-april')} #Mail=
+ContainerBody #_t {background-image:url('https://7bfahyka.emltrk.com/v2/7bf=
+ahyka?f&i=3D14184589&t=3Dnewsletter-april')}</style>
+<div id=3D"_t"></div>=20
+<img src=3D"https://7bfahyka.emltrk.com/v2/7bfahyka?i=3D14184589&amp;t=3Dne=
+wsletter-april" width=3D"1" height=3D"1" border=3D"0" alt=3D""> =20
+<a href=3D
+"https://go.sentry.marketing/Nzc2LU1KTi01MDEAAAGLYeaCVvpqG-haBXMrp5wqtP0jUM=
+9v0OIHdQVRlR-V98WGnh6xvB-D47wDpAvwpZGgde2Q2Aw=3D"
+></a>
+<img src=3D"https://go.sentry.marketing/trk?t=3D1&mid=3DNzc2LU1KTi01MDE6MDo=
+0MTY2OjE0MjQzOjU4NTg0OjQ1MDA6OToyMzU5NjoxNDE4NDU4OTpqb25AdHdpdHRlcnJlYm9vdC=
+5jb20%3D" width=3D"1" height=3D"1" style=3D"display:none !important;" alt=
+=3D"" />
+
+<div style=3D"text-align: center; max-width: 600px; min-height: 4rem; margi=
+n: 1rem auto 0;"><font face=3D"Verdana" size=3D"2">
+<p style=3D"font-size: 0.8125rem;">This email was sent to <a style=3D"color=
+: #e1557c;" href=3D
+"mailto:jon@twitterreboot.com" target=3D"_blank" class=3D"mktNoTrack"
+>jon@twitterreboot.com</a>. If you no longer wish to receive these emails y=
+ou may <a style=3D"color: #e1557c;" href=3D
+"https://go.sentry.marketing/u/Nzc2LU1KTi01MDEAAAGLYeaCVhC4cSj5Pgl43WeHjCJ7=
+wXrK0F1fwoXwkdpztUKOb1zz71JELyMnv8iWltNalKNzIDk=3D"
+>unsubscribe</a> at any time.</p></font></div>
+</body>
+</html>
+------=_Part_225074963_2146224207.1682602578523--
