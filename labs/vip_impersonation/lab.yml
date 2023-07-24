@@ -22,7 +22,8 @@ details: |
 
   ## Requirements
 
-  - Create VIP List ($org_vip_display_names)
+  - Create VIP Display Names List ($org_vip_display_names)
+  - Create Finance Users' Emails List ($finance_users)
   
   ### VIPs
 

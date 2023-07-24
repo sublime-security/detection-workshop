@@ -1,0 +1,71 @@
+name: Payroll Fraud
+description: Search for VIP Impersonation
+details: |
+  # VIP Impersonation
+
+  ## Focus Areas
+  - Sender Email Characteristics
+  - Recipient Role
+  - First-time Sender
+  - Body Content
+  - NLU
+
+  ---
+  
+  ## Brief
+
+  Phishing emails are being received impersonating staff members
+
+  These emails target HR/Finance staff and request a change to the bank details used for salary payments.
+
+  --- 
+
+  ## Requirements
+
+  - Create All Users Display Names ($org_display_names)
+  - Create HR Users Emails List ($hr_users)
+  
+  ### Org Display Names
+
+  - Roger Stone
+  - Arnold Grieves
+  - Clara Smith
+  - Bobby Robbins
+  - Pamela Ross
+
+  ### HR Users Emails
+
+  - pamela.ross@tyrellcorp.com
+  - marcus.roman@tyrellcorp.com
+
+queries:
+  full: |
+    type.inbound and
+
+    // Sender display name matches an org user
+    sender.display_name in $org_display_names and 
+
+    // FTS
+    ((
+      sender.email.domain.root_domain in $free_email_providers
+      and sender.email.email not in $sender_emails
+    ) or 
+    (
+      sender.email.domain.root_domain not in $free_email_providers
+      and sender.email.domain.domain not in $sender_domains
+    )) and
+
+    // HR user
+    any(recipients.to, .email.email in $hr_users) and 
+
+    // Fraud keywords
+    length(filter(["pay", "bank", "transfer", "salary", "assist", "update", "change", "switch"], strings.icontains(body.plain.raw,.)) > 2 and
+
+    // ML NLU
+    any(ml.nlu_classifier(coalesce(body.html.display_text, body.plain.raw)).intents,
+      .name in ("bec") and .confidence == "high"
+    ) and 
+
+    any(ml.nlu_classifier(coalesce(body.html.display_text, body.plain.raw)).entities,
+      .name == "financial" and strings.icontains(.text, "salary")
+    )
