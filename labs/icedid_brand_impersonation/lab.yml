@@ -1,0 +1,43 @@
+name: IcedID Brand Impersonation
+description: Search for IcedId's Brand Impersonation
+details: |
+  # Iced Brand Impersonation
+
+  ## Focus Areas
+  - Attachment Content
+  - Links
+  - NLU
+
+  ---
+  
+  ## Brief
+
+  A PDF attachment is being leveraged with an embedded link.
+
+  The embedded link triggers the download of an encrypted zip containing an ISO.
+
+  This ISO contains an LNK and hidden CMD and DLL files.
+
+  --- 
+
+  ## Requirements
+
+  None
+  
+queries:
+  full: |
+    type.inbound and 
+    any(attachments,
+      // Attachment has a PDF extension
+      .file_extension == "pdf" and 
+      any(file.explode(.),
+        // Attachment includes reference to Adobe
+        any(ml.nlu_classifier(.scan.ocr.raw).entities, 
+          .name == "org" and .text == "Adobe" 
+        ) and 
+        // No links to adobe.com in the PDF		
+        all(.scan.pdf.urls,.domain.root_domain != "adobe.com") and 
+        // Shared Web Archive Lure
+        strings.ilike(.scan.ocr.raw, "*shared web archived document*") 
+      ) 
+    ) 
