@@ -1,2 +1,44 @@
 name: HTML Smuggling
-description: The HTML smuggling challenge
+description: Search for Qakbot HTML Smuggling
+details: |
+  # QakBot HTML Smuggling 
+
+  ## Focus Areas
+  - Attachment Content
+
+  ---
+  
+  ## Brief
+
+  A QakBot malware delivery mechanism.
+
+  It leverages an HTML Smuggled ZIP, which contains an ISO.
+
+  The ISO contains a VBS script which launches a PowerShell script and subsequently a DLL to achieve infection!
+
+  --- 
+
+  ## Requirements
+
+  None
+  
+queries:
+  full: |
+    type.inbound and 
+    any(attachments, 
+      (
+      .file_extension in~ ("html", "htm") or
+      .file_extension in~ $file_extensions_common_archives or
+      .file_type == "html"
+    ) and  
+    any(file.explode(.), 
+      any(.scan.strings.strings, 
+        strings.ilike(.,
+          // Base64 encoded ISOs
+          "*SVNPIDk2NjAvSEZT*",
+          "*MTk5MyBFLllPVU5HREFMRQ*",
+          // Reversed base64 encoded ISOs
+          "*TZESvAjN2kDIPNVS*",
+          "*QRMFERH5UVPllLFByM5kTM*"
+    )))
+  )
