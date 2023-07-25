@@ -1,0 +1,37 @@
+name: Qakbot OneNote
+description: Search for Qakbot OneNotes
+details: |
+  # QakBot HTML Smuggling 
+
+  ## Focus Areas
+  - Attachment Content
+
+  ---
+  
+  ## Brief
+
+  Script files are being embedded within OneNote .one files.
+
+  Office365 lures are used to encourage users to launch the scripts which then download and launch a remotely-hosted DLL.
+
+  --- 
+
+  ## Requirements
+
+  None
+  
+queries:
+  full: |
+    type.inbound
+    and any(attachments,
+      any(file.explode(.),
+        // Limit our match to .one files
+        .file_extension == "one" and 
+
+        // Expected YARA rule fires for repeated references
+        any(.scan.yara.matches,
+                .name == "SUSP_OneNote_Repeated_FileDataReference_Feb23"
+            )	
+      )
+    ) 
+
