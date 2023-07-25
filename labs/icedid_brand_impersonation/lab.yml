@@ -36,7 +36,7 @@ queries:
           .name == "org" and .text == "Adobe" 
         ) and 
         // No links to adobe.com in the PDF		
-        all(.scan.pdf.urls,.domain.root_domain != "adobe.com") and 
+        all(.scan.url.urls,.domain.root_domain != "adobe.com") and 
         // Shared Web Archive Lure
         strings.ilike(.scan.ocr.raw, "*shared web archived document*") 
       ) 
