@@ -1,0 +1,52 @@
+name: IcedID PDF Link
+description: Search for IcedId's PDF Links
+details: |
+  # Iced PDF Link
+
+  ## Focus Areas
+  - Attachment Content
+  - Links
+  - NLU
+
+  ---
+  
+  ## Brief
+
+  An IcedID malware delivery mechanism. 
+  
+  An Adobe-branded PDF with a link to a remotely-hosted, password-protected zip. 
+  
+  The zip contains an ISO, with an LNK and a hidden folder of a CMD and DLL payload (renamed to a .DAT). 
+  
+  On launch, the DAT file is copied to AppData and executed.
+
+  --- 
+
+  ## Requirements
+
+  None
+  
+queries:
+  full: |
+    type.inbound and
+    any(attachments, 
+        // Attachment is a PDF
+        .file_extension in~ ("pdf") and 
+        any(file.explode(.),
+            // PDF is Adobe-branded
+            any(ml.nlu_classifier(.scan.ocr.raw).entities, 
+                .name == "org" and .text == "Adobe"
+            ) and 
+            any(.scan.pdf.urls, 
+                any(beta.linkanalysis(.).files_downloaded,
+                    any(file.explode(.), 
+                        // A URL in the PDF downloads a zipped ISO
+                        any(.flavors.yara, . == "encrypted_zip") and 
+                        any(.scan.zip.attempted_files, 
+                            strings.iends_with(.,".iso")
+                        ) 
+                    )
+                )
+            )
+        )
+    )
