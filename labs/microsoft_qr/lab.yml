@@ -1,0 +1,70 @@
+name: Microsoft QR Code Phishing
+description: Search for fake Microsoft QR codes
+details: |
+  # Microsoft QR Code Phishing
+
+  ## Focus Areas
+  - Sender Email Characteristics
+  - Attachment Content
+  - Links
+
+  ---
+  
+  ## Brief
+
+  Threat actors are sending fake 'Microsoft' emails.
+
+  These emails contain a single image that includes a QR code. The user is encouraged to scan these QR codes to refresh their Multi-Factor Authentication (MFA) to prevent losing access to their account.
+
+  These links typically send the user to a credential theft site, for example a fake login portal, not to any Microsoft related service.
+
+  --- 
+
+  ## Requirements
+
+  None.
+
+queries:
+  full: |
+    type.inbound
+    and (
+        any(attachments, 
+            .file_type in~ ('bmp', 'png', 'jpg', 'jpeg')
+            and any(ml.logo_detect(.).brands, strings.starts_with(.name, "Microsoft"))
+        )
+        or any(ml.logo_detect(beta.message_screenshot()).brands, strings.starts_with(.name, "Microsoft"))
+    )
+    and any(attachments,
+        .file_type in~ ('bmp', 'png', 'jpg', 'jpeg')
+        and (
+            any(file.explode(.),
+                any(.scan.strings.strings, regex.icontains(.,  'scan|camera'))   
+                and any(.scan.strings.strings, regex.icontains(.,  '\bQR\b|Q\.R\.|barcode'))
+            )
+            or (
+                any(file.explode(.), .scan.qr.type == "url"
+                    // recipient email address is present in the URL, a common tactic used in credential phishing attacks 
+                    and any(recipients.to, strings.icontains(..scan.qr.data, .email.email))
+                )
+            )   
+        )
+    )
+    and (
+        not any(headers.hops,
+            .authentication_results.compauth.verdict is not null
+            and .authentication_results.compauth.verdict == "pass"
+            and sender.email.domain.domain == "microsoft.com"
+        )
+    )
+    // unsolicited
+    and (
+        (
+            sender.email.domain.root_domain in $free_email_providers
+            and sender.email.email not in $recipient_emails
+        )
+        or (
+            sender.email.domain.root_domain not in $free_email_providers
+            and sender.email.domain.domain not in $recipient_domains
+        )
+    )
+
