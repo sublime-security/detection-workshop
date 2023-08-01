@@ -15,12 +15,6 @@ details: |
   It leverages an HTML Smuggled ZIP, which contains an ISO.
 
   The ISO contains a VBS script which launches a PowerShell script and subsequently a DLL to achieve infection!
-
-  --- 
-
-  ## Requirements
-
-  None
   
 queries:
   full: |

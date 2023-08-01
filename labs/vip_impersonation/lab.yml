@@ -18,23 +18,6 @@ details: |
 
   The emails originate from free email providers, .e.g Gmail, Hotmail.
 
-  --- 
-
-  ## Requirements
-
-  - Create VIP Display Names List ($org_vip_display_names)
-  - Create Finance Users' Emails List ($finance_users)
-  
-  ### VIPs
-
-  - Eldon Tyrell
-  - Clara Smith
-  - Bobby Robbins
-
-  ### Finance User Emails
-
-  - roger.stone@tyrellcorp.io
-
 queries:
   full: |
     type.inbound and

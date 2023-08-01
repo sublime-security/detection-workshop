@@ -19,12 +19,6 @@ details: |
   The zip contains an ISO, with an LNK and a hidden folder of a CMD and DLL payload (renamed to a .DAT). 
   
   On launch, the DAT file is copied to AppData and executed.
-
-  --- 
-
-  ## Requirements
-
-  None
   
 queries:
   full: |

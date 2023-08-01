@@ -18,26 +18,6 @@ details: |
 
   These emails target HR/Finance staff and request a change to the bank details used for salary payments.
 
-  --- 
-
-  ## Requirements
-
-  - Create All Users Display Names ($org_display_names)
-  - Create HR Users Emails List ($hr_users)
-  
-  ### Org Display Names
-
-  - Roger Stone
-  - Eldon Tyrell
-  - Clara Smith
-  - Bobby Robbins
-  - Pamela Ross
-
-  ### HR Users Emails
-
-  - pamela.ross@tyrellcorp.io
-  - marcus.roman@tyrellcorp.io
-
 queries:
   full: |
     type.inbound and

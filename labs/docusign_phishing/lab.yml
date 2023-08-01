@@ -19,12 +19,6 @@ details: |
 
   On click, the user is sent to an attacker-controlled site.
 
-  --- 
-
-  ## Requirements
-
-  None.
-
 queries:
   full: |
     type.inbound

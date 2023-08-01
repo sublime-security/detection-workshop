@@ -17,12 +17,6 @@ details: |
   The embedded link triggers the download of an encrypted zip containing an ISO.
 
   This ISO contains an LNK and hidden CMD and DLL files.
-
-  --- 
-
-  ## Requirements
-
-  None
   
 queries:
   full: |

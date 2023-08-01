@@ -18,12 +18,6 @@ details: |
 
   These links typically send the user to a credential theft site, for example a fake login portal, not to any Microsoft related service.
 
-  --- 
-
-  ## Requirements
-
-  None.
-
 queries:
   full: |
     type.inbound

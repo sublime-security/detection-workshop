@@ -13,12 +13,6 @@ details: |
   In early 2023, several malware families, including Qakbot, focused heavily on script files embedded within Microsoft OneNote .one files. Due in part to the lack of Mark-of-the-Web applied to these embedded files (until this was patched by Microsoft!).
 
   Office 365 lures, amongst others like Adobe, are used to encourage users to launch the scripts. These scripts would then typically download and launch remotely-hosted DLLs to complete infection.
-
-  --- 
-
-  ## Requirements
-
-  None
   
 queries:
   full: |
