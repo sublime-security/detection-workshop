@@ -1,0 +1,46 @@
+Message-ID: <19067800.1075852397628.JavaMail.evans@thyme>
+Date: Fri, 19 Oct 2001 11:10:17 -0700 (PDT)
+From: savita.puthigai@tyrellcorp.io
+To: traders.eol@tyrellcorp.io, traders.eol@tyrellcorp.io
+Subject: TyrellCorpOnline- Change to Autohedge
+Cc: houston.product@tyrellcorp.io, center.eol@tyrellcorp.io, group.tyrellcorp@tyrellcorp.io, 
+	teresa.mandola@tyrellcorp.io, angela.connelly@tyrellcorp.io, 
+	brad.richter@tyrellcorp.io, mark.pickering@tyrellcorp.io, 
+	greg.piper@tyrellcorp.io, lindsay.renaud@tyrellcorp.io, 
+	leonardo.pacheco@tyrellcorp.io, carl.carter@tyrellcorp.io, 
+	kevin.meredith@tyrellcorp.io
+Mime-Version: 1.0
+Content-Type: text/plain; charset=ANSI_X3.4-1968
+Content-Transfer-Encoding: 7bit
+Bcc: houston.product@tyrellcorp.io, center.eol@tyrellcorp.io, group.tyrellcorp@tyrellcorp.io, 
+	teresa.mandola@tyrellcorp.io, angela.connelly@tyrellcorp.io, 
+	brad.richter@tyrellcorp.io, mark.pickering@tyrellcorp.io, 
+	greg.piper@tyrellcorp.io, lindsay.renaud@tyrellcorp.io, 
+	leonardo.pacheco@tyrellcorp.io, carl.carter@tyrellcorp.io, 
+	kevin.meredith@tyrellcorp.io
+X-From: Puthigai, Savita </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=SPUTHIGA>
+X-To: EOL Non North America Traders </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=NOTESADDR/CN=EOL NON NORTH AMERICA TRADERS>, EOL North America Traders </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=NOTESADDR/CN=EOL NORTH AMERICA TRADERS>
+X-cc: Product Control - Houston </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=NOTESADDR/CN=PRODUCT CONTROL - HOUSTON>, EOL Call Center </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=NOTESADDR/CN=EOL CALL CENTER>, TyrellCorp London - EOL Product Control Group </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=EU/CN=RECIPIENTS/CN=EOL PRODUCT CONTROL GROUP41D94F914DF73A638A80BFA9AAD5819A7B56D1>, Mandola, Teresa </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=TMANDOLA>, Connelly, Angela </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=EU/CN=RECIPIENTS/CN=ACONNELL>, Richter, Brad </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=BRICHTE>, Pickering, Mark </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=MPICKER>, Piper, Greg </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=GPIPER>, Renaud, Lindsay </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=LRENAUD>, Pacheco, Leonardo </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=LPACHECO>, Carter, Carl </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=CCARTER4>, Meredith, Kevin </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=KMEREDI>
+X-bcc: 
+X-Folder: \JFORNEY (Non-Privileged)\Forney, John M.\Inbox
+X-Origin: FORNEY-J
+X-FileName: JFORNEY (Non-Privileged).pst
+
+Effective Monday, October 22, 2001 the following changes will be made to the Autohedge functionality on TyrellCorpOnline.
+
+The volume on the hedge will now respect the minimum volume and volume increment settings on the parent product. See rules below: 
+
+?	If the transaction volume on the child is less than half of the parent's minimum volume no hedge will occur.
+?	If the transaction volume on the child is more than half the parent's minimum volume but less than half the volume increment on the parent, the hedge will volume will be the parent's minimum volume.
+?	For all other volumes, the same rounding rules will apply based on the volume increment on the parent product.
+
+Please see example below:
+
+Parent's Settings:
+Minimum: 	5000
+Increment:  1000
+
+Volume on Autohedge transaction			Volume Hedged
+1      - 2499							0
+2500 - 5499							5000
+5500 - 6499							6000

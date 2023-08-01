@@ -1,0 +1,41 @@
+Message-ID: <17735973.1075861429948.JavaMail.evans@thyme>
+Date: Tue, 6 Nov 2001 06:16:23 -0800 (PST)
+From: d.alexander@tyrellcorp.io
+To: d.alexander@tyrellcorp.io, justin.o'malley@tyrellcorp.io, chris.gaskill@tyrellcorp.io, 
+	jay.reitmeyer@tyrellcorp.io, sheila.chang@tyrellcorp.io, 
+	adam.bayer@tyrellcorp.io, aaron.berutti@tyrellcorp.io, 
+	milen.kurdov@tyrellcorp.io
+Subject: Cube Processing
+Cc: david.dronet@tyrellcorp.io, yan.wang@tyrellcorp.io, rishi.mehta@tyrellcorp.io, 
+	angela.hylton@tyrellcorp.io, chris.hyde@tyrellcorp.io
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Bcc: david.dronet@tyrellcorp.io, yan.wang@tyrellcorp.io, rishi.mehta@tyrellcorp.io, 
+	angela.hylton@tyrellcorp.io, chris.hyde@tyrellcorp.io
+X-From: Alexander, Kim D </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=KALEXAN2>
+X-To: Alexander, Kim D </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=Kalexan2>, O'Malley, Justin </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=Jomalley>, Gaskill, Chris </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=Cgaskill>, Reitmeyer, Jay </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=Jreitme>, Chang, Sheila </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=Schang2>, Bayer, Adam </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=Abayer>, Berutti, Aaron </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=Aberutti>, Kurdov, Milen </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=Mkurdov>
+X-cc: Dronet, David </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=Ddronet>, Wang, Yan </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=Ywang>, Mehta, Rishi </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=Rmehta2>, Hylton, Angela </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=Ahylton>, Hyde, Chris </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=Chyde3>
+X-bcc: 
+X-Folder: \JREITME (Non-Privileged)\Reitmeyer, Jay\Inbox
+X-Origin: Reitmeyer-J
+X-FileName: JREITME (Non-Privileged).pst
+
+All, 
+
+The Cube is being processed now. I'll alert Adam and Justin when 
+it's completed.
+
+At this moment the exact cause is unknown. However the error 
+appears to have been an authenication error of the cube getting to 
+the FDYPIPELINEPROD database.  
+
+Changing the authenication from that provided by CORP domain to
+the database admin account and password solved the problem.
+
+I'll notify you all of the solution as soon as we determine what caused
+the failure.  In the meantime any reports rerun after the cube finishes procesing
+should have the most recent data.
+
+Thanks, 
+Kim
