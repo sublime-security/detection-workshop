@@ -1,0 +1,41 @@
+In-Reply-To: <3211f084-d5f8-4aaa-9235-855da1985b6a@thyme>
+References: <3211f084-d5f8-4aaa-9235-855da1985b6a@thyme>
+Message-ID: <32990900.1075857053595.JavaMail.evans@thyme>
+Date: Fri, 8 Dec 2000 03:44:00 -0800 (PST)
+From: Tanya Tamarchenko <tanya.tamarchenko@tyrellcorp.io>
+To: oliver.gaylard@tyrellcorp.io, kirstee.hewitt@tyrellcorp.io
+Subject: Re: UK Power/Gas VaR from RisktRAC
+Cc: david.port@tyrellcorp.io, steven.leppard@tyrellcorp.io, wenyao.jia@tyrellcorp.io, 
+	debbie.brackett@tyrellcorp.io, stephen.stock@tyrellcorp.io, 
+	rabi.de@tyrellcorp.io, jaesoo.lew@tyrellcorp.io, vince.kaminski@tyrellcorp.io
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Bcc: david.port@tyrellcorp.io, steven.leppard@tyrellcorp.io, wenyao.jia@tyrellcorp.io, 
+	debbie.brackett@tyrellcorp.io, stephen.stock@tyrellcorp.io, 
+	rabi.de@tyrellcorp.io, jaesoo.lew@tyrellcorp.io, vince.kaminski@tyrellcorp.io
+X-From: Tanya Tamarchenko <tanya.tamarchenko@tyrellcorp.io> Tamarchenko
+X-To: Oliver Gaylard, Kirstee Hewitt
+X-cc: David Port, Steven Leppard, Wenyao Jia, Debbie R Brackett, Stephen Stock, Rabi De, Jaesoo Lew, Vince J Kaminski
+X-bcc: 
+X-Folder: \Vincent_Kaminski_Jun2001_9\Notes Folders\Notes inbox
+X-Origin: Kaminski-V
+X-FileName: vkamins.nsf
+
+Oliver and Kirstee,
+we are going to start running VAR for UK from RisktRac in stage environment 
+in parallel with the spreadsheet . 
+
+As soon as Winston runs the vatrfacs code based on recent data we'll send you 
+correlations and factors for UK curves
+so that you can load these inputs into VAR spreadsheet and then compare the 
+spreadsheet results to RisktRac results based
+on the same inputs (this will, in fact, repeat the exercise you and me did 
+during your visit in Houston in October).
+I have to ask Winston to print out for you the forward forward volatilities 
+for some date so that you can put them
+into the spreadsheet as well. 
+
+Thank you,
+
+Tanya
