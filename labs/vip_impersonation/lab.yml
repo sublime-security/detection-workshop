@@ -27,7 +27,7 @@ details: |
   
   ### VIPs
 
-  - Arnold Grieves
+  - Eldon Tyrell
   - Clara Smith
   - Bobby Robbins
 
@@ -40,13 +40,13 @@ queries:
     type.inbound and
 
     // Sender display name matches a VIP
-    sender.display_name in $org_vip_display_names and 
+    any($org_vips, .display_name == sender.display_name) and
 
     // Sender using free email provider
     sender.email.domain.domain in $free_email_providers and
 
     // Add known VIP emails as exceptions or trade-off with FTS
-    sender.email.email not in ("arnold.grieves@live.com", "clarasmith@gmail.com") and 
+    sender.email.email not in ("eldon.tyrell@live.com", "clarasmith@gmail.com") and 
 
     // Recipient is a Finance Department user
     any(recipients.to, .email.email in $finance_users) and 
