@@ -39,7 +39,7 @@ X-MS-Exchange-Organization-Network-Message-Id:
 	d197c604-7c7b-457b-e8f3-08db68feb99e
 X-MS-TNEF-Correlator:
 X-MS-Exchange-Organization-RecordReviewCfmType: 0
-received-spf: Pass (protection.outlook.com: domain of doucsign.co.jp
+Received-SPF: Pass (protection.outlook.com: domain of doucsign.co.jp
  designates 117.20.109.230 as permitted sender)
  receiver=protection.outlook.com; client-ip=117.20.109.230;
  helo=m103.secure.ne.jp; pr=C
