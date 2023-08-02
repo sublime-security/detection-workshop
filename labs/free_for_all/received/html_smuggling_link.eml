@@ -1,4 +1,4 @@
-Delivered-To: rachael@tyrellcorp.io
+Delivered-To: rachael@tyrellcorp.com
 Received: by 2002:a05:6808:ec2:0:0:0:0 with SMTP id q2csp351192oiv;
         Wed, 2 Nov 2022 18:54:45 -0700 (PDT)
 X-Received: by 2002:a05:6402:42c7:b0:461:c375:86b8 with SMTP id i7-20020a05640242c700b00461c37586b8mr27484155edc.40.1667440245649;
@@ -32,7 +32,7 @@ ARC-Authentication-Results: i=2; mx.google.com;
 Return-Path: <bob@tyrellcorpcom.onmicrosoft.com>
 Received: from NAM11-BN8-obe.outbound.protection.outlook.com (mail-bn8nam11on2041.outbound.protection.outlook.com. [40.107.236.41])
         by mx.google.com with ESMTPS id dn11-20020a17090794cb00b007adc4a0aeb5si16316950ejc.873.2022.11.02.18.50.44
-        for <rachael@tyrellcorp.io>
+        for <rachael@tyrellcorp.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
         Wed, 02 Nov 2022 18:50:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of bob@tyrellcorpcom.onmicrosoft.com designates 40.107.236.41 as permitted sender) client-ip=40.107.236.41;
@@ -67,7 +67,7 @@ Received: from BN6PR08MB2451.namprd08.prod.outlook.com
  ([fe80::fd1e:9f41:94d8:a637%3]) with mapi id 15.20.5769.021; Thu, 3 Nov 2022
  01:50:42 +0000
 From: Herman Schlect <herman@schlectinc.com>
-To: Josh Kamdjou <rachael@tyrellcorp.io>
+To: Josh Kamdjou <rachael@tyrellcorp.com>
 Subject: Re: invoice
 Date: Thu, 3 Nov 2022 01:50:41 +0000
 Message-ID:

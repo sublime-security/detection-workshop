@@ -1,14 +1,14 @@
 Authentication-Results-Original: gateway.tyrellcorpmail.com; dkim=none; dmarc=fail
- reason="No valid SPF, No valid DKIM" header.from=tyrellcorp.io 
+ reason="No valid SPF, No valid DKIM" header.from=tyrellcorp.com 
  (policy=none); spf=softfail (gateway.tyrellcorpmail.com: 66.66.66.66 is neither
- permitted nor denied by domain of bobby.robbins@tyrellcorp.io)
- smtp.mailfrom=bobby.robbins@tyrellcorp.io
-Received-SPF: SoftFail (protection.outlook.com: domain of transitioning tyrellcorp.io discourages use of 66.66.66.66 as permitted sender)
-From: "IT Administrators" <bobby.robbins@tyrellcorp.io>
-To: "Bobby Robbins" <bobby.robbins@tyrellcorp.io>
+ permitted nor denied by domain of bobby.robbins@tyrellcorp.com)
+ smtp.mailfrom=bobby.robbins@tyrellcorp.com
+Received-SPF: SoftFail (protection.outlook.com: domain of transitioning tyrellcorp.com discourages use of 66.66.66.66 as permitted sender)
+From: "IT Administrators" <bobby.robbins@tyrellcorp.com>
+To: "Bobby Robbins" <bobby.robbins@tyrellcorp.com>
 Subject: IT Security Attestation Contract
 Date: Tue, 25 Jul 2023 09:00:00 UTC
-Message-ID: <1728e24e-20e0-4a30-ba70-bfba4cf67e20@tyrellcorp.io>
+Message-ID: <1728e24e-20e0-4a30-ba70-bfba4cf67e20@tyrellcorp.com>
 MIME-Version: 1.0
 Content-Type: multipart/mixed; boundary=6453a8fdf6cff80f927e1f327d0f775347d2b14812cad287163cb02fca97
 
@@ -27,7 +27,7 @@ ot;, &quot;Segoe UI&quot;, &quot;Helvetica Neue Medium&quot;, Arial, sans-s=
 erif; font-size: 41px;">Your email will be suspended.</td>
 </tr>
 <tr><td>
-<b>bobby.robbins@tyrellcorp.io</b><br/><br/>
+<b>bobby.robbins@tyrellcorp.com</b><br/><br/>
 
 You will lose access to your mailbox if you do not open and accept the new IT Security Attestation Contract attached.<br/><br/>
 
