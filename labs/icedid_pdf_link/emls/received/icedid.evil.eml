@@ -1,9 +1,28 @@
-Authentication-Results-Original: gateway.tyrellcorpmail.com; dkim=none; dmarc=fail
- reason="No valid SPF, No valid DKIM" header.from=tyrellcorp.com 
- (policy=none); spf=softfail (gateway.tyrellcorpmail.com: 66.66.66.66 is neither
- permitted nor denied by domain of bobby.robbins@tyrellcorp.com)
- smtp.mailfrom=bobby.robbins@tyrellcorp.com
-Received-SPF: SoftFail (protection.outlook.com: domain of transitioning tyrellcorp.com discourages use of 66.66.66.66 as permitted sender)
+X-MS-Exchange-Organization-InternalOrgSender: True
+Received: from YQBP288CA0007.CANP288.PROD.OUTLOOK.COM (2603:10b6:c01:6a::11)
+ by CH0PR11MB5345.namprd11.prod.outlook.com (2603:10b6:610:b8::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6433.22; Mon, 29 May
+ 2023 19:49:05 +0000
+Received: from YQBCAN01FT028.eop-CAN01.prod.protection.outlook.com
+ (2603:10b6:c01:6a:cafe::6) by YQBP288CA0007.outlook.office365.com
+ (2603:10b6:c01:6a::11) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6433.23 via Frontend
+ Transport; Mon, 29 May 2023 19:49:05 +0000
+Authentication-Results: spf=fail (sender IP is 183.90.240.12)
+ smtp.mailfrom=tyrellcorp.com; dkim=none (message not signed)
+ header.d=none;dmarc=fail action=quarantine header.from=tyrellcorp.com;
+Received-SPF: Fail (protection.outlook.com: domain of tyrellcorp.com does not
+ designate 183.90.240.12 as permitted sender) receiver=protection.outlook.com;
+ client-ip=183.90.240.12; helo=sv2211.xserver.jp;
+Received: from sv2211.xserver.jp (183.90.240.12) by
+ YQBCAN01FT028.mail.protection.outlook.com (10.118.138.127) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6455.21 via Frontend Transport; Mon, 29 May 2023 19:49:04 +0000
+X-Virus-Status: clean(F-Secure/fsigk_smtp/521/virusgw2201.xserver.jp)
+Received: from [127.0.0.1] (unknown [20.243.19.54])
+	by sv2211.xserver.jp (Postfix) with ESMTPSA id 1D0DA4038B04E7
+	for <kim.chretien@tyrellcorp.com>; Tue, 30 May 2023 02:02:14 +0900 (JST)
 From: "IT Administrators" <bobby.robbins@tyrellcorp.com>
 To: "Bobby Robbins" <bobby.robbins@tyrellcorp.com>
 Subject: IT Security Attestation Contract
