@@ -1,0 +1,530 @@
+Delivered-To: bobby.robbins@tyrellcorp.io
+Received: by 2002:a05:7000:8609:b0:4c8:2b86:3ebd with SMTP id bb9csp4319860mab;
+        Thu, 11 May 2023 12:47:58 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5dOhOUynP34oElTIDJFFUXlODuLnT5NikT4A0AcZJnnYs2G+kn7auWU6Ksv3TNTsysXhEp
+X-Received: by 2002:a05:6a00:179b:b0:63b:62d1:d868 with SMTP id s27-20020a056a00179b00b0063b62d1d868mr34578796pfg.8.1683834478387;
+        Thu, 11 May 2023 12:47:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683834478; cv=none;
+        d=google.com; s=arc-20160816;
+        b=rhspdbLb370JA9A5dTNeg7sHDl8foOPAl/j+NpcIXzCuYmBmR1vodUdKTsMkyfbas+
+         62p2E3phRMMFKon3D8EcHYtwnJ2+aiRzV2Z2ugT3zwwiykQRTr1/LN+38gXNl9rLWjBZ
+         u8y/DJHNrrMxdeFHhjkeQM6yagLcIHe+Y2TaFd8brzWcAZKVXZeGTosJRlffFDNtunV3
+         JTduMJ5VdT3rr58kCKfmgk3xbRqnFaIAZiGlMio78055LbgIpLX/NnVD6dEMpZoQbyrx
+         2oDNewMgTZFpaerTMqg58P2fi0VK0pTpDoRWF3WXFwViFwuxcnEo7kqyX4tXe7eNY2L+
+         nf/A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:mime-version:errors-to:subject:message-id:to:reply-to
+         :from:date:dkim-signature:dkim-signature;
+        bh=xnX8VXu7J04JiX0rAxLmrB/JLa22MxLKvLG7t5miBCs=;
+        b=gIUl3l9i2/EuSIPtJ+hYY0uGRFbOvuMH8yZcHL+ItXXdjvH+lXY4QwjHxSMMSc1fbO
+         8T9EfCmrS956PAXry0CvJqRLPnpr1YtNnPrDkJMT4G5XFyrFyKMWAM/0Md/9KVPq/x/w
+         4AIma110r1ysq1mpIZBK2O/ug13CRvrM7JPw75PA/nllOb37Euv4HRLIICkVXPm5XWyC
+         Y5b8aQxAbzwwm3SHLAdWqoZwk58XjmlzQa9oBxaw5gBFsvQeip89KDSpfUwavXkAKvLA
+         o4zXH6CVYwaNgnXrjOsQKRGoveA9dJoa3CNpXQB+Oa/FiA97M8njykrZWniCUKbYsMGr
+         SOPg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@adobe.com header.s=i4g5aewsgd7ryvtfutogcuufmul7lwfw header.b=Dq9JA9l7;
+       dkim=pass header.i=@amazonses.com header.s=hsbnp7p3ensaochzwyq5wwmceodymuwv header.b="SO/19aQz";
+       spf=pass (google.com: domain of 010101880c5b1c85-ba451605-efda-475c-9b5a-8a2e9377b62d-000000@us-west-2.amazonses.com designates 54.240.27.170 as permitted sender) smtp.mailfrom=010101880c5b1c85-ba451605-efda-475c-9b5a-8a2e9377b62d-000000@us-west-2.amazonses.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=adobe.com
+Return-Path: <010101880c5b1c85-ba451605-efda-475c-9b5a-8a2e9377b62d-000000@us-west-2.amazonses.com>
+Received: from a27-170.smtp-out.us-west-2.amazonses.com (a27-170.smtp-out.us-west-2.amazonses.com. [54.240.27.170])
+        by mx.google.com with ESMTPS id b123-20020a62cf81000000b00643b9afbb97si8544153pfg.56.2023.05.11.12.47.58
+        for <bobby.robbins@tyrellcorp.io>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 11 May 2023 12:47:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010101880c5b1c85-ba451605-efda-475c-9b5a-8a2e9377b62d-000000@us-west-2.amazonses.com designates 54.240.27.170 as permitted sender) client-ip=54.240.27.170;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@adobe.com header.s=i4g5aewsgd7ryvtfutogcuufmul7lwfw header.b=Dq9JA9l7;
+       dkim=pass header.i=@amazonses.com header.s=hsbnp7p3ensaochzwyq5wwmceodymuwv header.b="SO/19aQz";
+       spf=pass (google.com: domain of 010101880c5b1c85-ba451605-efda-475c-9b5a-8a2e9377b62d-000000@us-west-2.amazonses.com designates 54.240.27.170 as permitted sender) smtp.mailfrom=010101880c5b1c85-ba451605-efda-475c-9b5a-8a2e9377b62d-000000@us-west-2.amazonses.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=adobe.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=i4g5aewsgd7ryvtfutogcuufmul7lwfw; d=adobe.com; t=1683834477;
+	h=Date:From:Reply-To:To:Message-ID:Subject:MIME-Version:Content-Type;
+	bh=pb467f99C9hIA7/xuGT9/Q5dNEJjp3ayjGl6r7HHAKc=;
+	b=Dq9JA9l7IVW/XlN3xDQwMSMzzBYOCBFzRjgNWACPL9P7IjaK+Wo70GZcYrL3Ui8V
+	DQqAh/0nxI8JaC9AJ7src/t8o11m3w6NvnVTwXoQoDONzD3e13BYD6kDimIfqulsGie
+	Y/LUf1mfTVGrP9csH0ttgdShNBa0EL7d6y1fEmcs=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=hsbnp7p3ensaochzwyq5wwmceodymuwv; d=amazonses.com; t=1683834477;
+	h=Date:From:Reply-To:To:Message-ID:Subject:MIME-Version:Content-Type:Feedback-ID;
+	bh=pb467f99C9hIA7/xuGT9/Q5dNEJjp3ayjGl6r7HHAKc=;
+	b=SO/19aQzP1OsUetwr8F2ijHBiw9k4ADl47Fsb2NYM+KVNBFG+QaiY2eakvAMKGjI
+	svfYXNLY/e1sHqCf6mGBbFM3VQlxDokowShM9iI6ha+mpmNHGBwbFXjhvhuPugWExmk
+	ZZbC0rN1nYojBLNfBH7D65Vxmz1lNEhMgdrqRR1E=
+Date: Thu, 11 May 2023 19:47:57 +0000
+From: Adobe <message@adobe.com>
+Reply-To: Adobe <message@adobe.com>
+To: bobby.robbins@tyrellcorp.io
+Message-ID: <010101880c5b1c85-ba451605-efda-475c-9b5a-8a2e9377b62d-000000@us-west-2.amazonses.com>
+Subject: Get started with Acrobat Pro
+Errors-To: Adobe <message@adobe.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_277295_627922069.1683834477695"
+Feedback-ID: 1.us-west-2.ku+g3V2webPClheY6fH/5SeT9kAvSyse8tlpucr1z2Q=:AmazonSES
+X-SES-Outgoing: 2023.05.11-54.240.27.170
+
+------=_Part_277295_627922069.1683834477695
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+------------------------------------------------------------------
+ADOBE Acrobat Pro
+------------------------------------------------------------------
+
+Dear Joshua,
+
+Welcome to Adobe Acrobat Pro. Your subscription lets you work with PDFs fro=
+m anywhere. Download your desktop software now to get started.
+
+Download Acrobat:
+https://www.adobe.com/go/download-acrobat
+
+Acrobat Pro lets you:
+
+=E2=80=A2 Edit text and images right in your PDF.
+=E2=80=A2 Convert PDFs to Microsoft Word, PowerPoint, Excel, and more.
+=E2=80=A2 Combine multiple files into one PDF and organize pages.
+=E2=80=A2 Collect feedback from others in one PDF online.
+=E2=80=A2 Send files to others for e-signing and track responses in real ti=
+me.
+
+You can access Acrobat tools in three ways when you sign in:
+
+Download Acrobat Pro to use tools on your desktop. https://www.adobe.com/go=
+/download-acrobat
+
+Open Acrobat online services in any browser. https://www.adobe.com/go/acrob=
+at-online
+
+Work on your mobile device by downloading the Adobe Acrobat Reader app. htt=
+ps://www.adobe.com/go/reader-mobile-app
+
+Thank you for being a valued customer,
+The Adobe Acrobat Team
+
+
+------------------------------------------------------------------
+
+Sign In:
+https://www.adobe.com/go/acrobat-online
+
+Learn:
+https://www.adobe.com/go/learn-dc
+
+Support:
+https://www.adobe.com/go/support-dc
+
+
+******************************************************************
+
+Adobe, the Adobe logo, the Adobe PDF logo, Acrobat, and Reader are either r=
+egistered trademarks or trademarks of Adobe in the United States and/or oth=
+er countries. All other trademarks are the property of their respective own=
+ers.
+
+ Adobe, 345 Park Ave., San Jose, CA 95110 USA =20
+------=_Part_277295_627922069.1683834477695
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:=
+schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:offi=
+ce"><head>
+
+<link rel=3D"icon" href=3D"https://www.adobe.com/favicon.ico" type=3D"image=
+/x-icon"/>
+<link rel=3D"shortcut icon" href=3D"https://www.adobe.com/favicon.ico" type=
+=3D"image/x-icon"/>
+<meta name=3D"x-apple-disable-message-reformatting"/>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8"/>
+<meta name=3D"viewport" content=3D"width=3Ddevice-width,initial-scale=3D1.0=
+"/>
+<meta name=3D"format-detection" content=3D"telephone=3Dno"/>
+<meta name=3D"format-detection" content=3D"date=3Dno"/>
+<meta name=3D"format-detection" content=3D"address=3Dno"/>
+<meta name=3D"format-detection" content=3D"email=3Dno"/>
+<title>Adobe</title>
+
+<!--[if mso]&gt;
+&lt;style type=3D&#34;text/css&#34;&gt;
+body, table, td, .mobile-text {
+font-family:Helvetica Neue, Helvetica, Verdana, Arial, sans-serif !importan=
+t;
+}
+&lt;/style&gt;
+&lt;xml&gt;
+  &lt;o:OfficeDocumentSettings&gt;
+    &lt;o:AllowPNG/&gt;
+    &lt;o:PixelsPerInch&gt;96&lt;/o:PixelsPerInch&gt;
+  &lt;/o:OfficeDocumentSettings&gt;
+&lt;/xml&gt;
+&lt;![endif]-->
+
+<style type=3D"text/css">
+@import url("https://use.typekit.net/onr8tbr.css");
+.ReadMsgBody { width:100%;}
+.ExternalClass {width:100%;}
+table {border-collapse:collapse; margin:0 auto;}
+a, a:visited {color:#1473E6; text-decoration:none;}
+.legal a {text-decoration:underline;}
+/* iOS BLUE LINKS */
+a[x-apple-data-detectors] {color:inherit !important; text-decoration:none !=
+important; font-size:inherit !important; font-family:inherit !important; fo=
+nt-weight:inherit !important; line-height:inherit !important;}
+
+.mobile {border-spacing:0;display:none!important;height:0;max-height:0;mso-=
+hide:all;overflow:hidden;visibility:hidden;width:0;}
+=09
+	@media only screen and (max-width:480px) {
+		u ~ div {
+			min-width:100vw;
+		}
+		div &amp;gt; u ~ div {
+        	min-width: 100%;
+		}
+		.web {
+			 display:none !important;
+	     }
+		=20
+		 .mobile {
+			 display:block !important;
+			 width:auto !important;
+			 overflow:visible !important;
+			 height:auto !important;
+			 max-height:inherit !important;
+			 font-size:15px !important;
+			 line-height:21px !important;
+			 visibility:visible !important;
+	     }
+		=20
+		 .email-width {
+			 width:90% !important;
+	     }
+		=20
+		 .full-width {
+			 width:100% !important;
+	     }
+		=20
+		 .mobile-image {
+			 height:auto !important;
+			 width:100% !important;
+	     }
+	=09
+		.social {
+			float:left !important;
+			padding-top:100px !important;
+			text-align:left !important;
+		}
+	}
+</style>
+</head>
+  <body bgcolor=3D"#E4E4E4" style=3D"background-color:#E4E4E4; margin:0; pa=
+dding:0;-webkit-font-smoothing:antialiased;width:100% !important;-webkit-te=
+xt-size-adjust:none;" topmargin=3D"0">
+<div width=3D"100%" style=3D"width: 100%; margin-bottom: 48px;">
+</div>
+    <div style=3D"font-size:1px; color:#E4E4E4; display:none; overflow:hidd=
+en; visibility:hidden;">Welcome to Adobe Acrobat Pro. Download your softwar=
+e today. =C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=
+=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=
+=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=
+=80=8C=C2=A0=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=
+=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0=E2=80=8C=C2=A0</div>
+
+<table width=3D"100%" bgcolor=3D"#E4E4E4" style=3D"background-color:#E4E4E4=
+;" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation">
+  <tbody><tr>
+    <td>
+    	<table class=3D"full-width" align=3D"center" width=3D"600" border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"width:=
+600px;">
+		<tbody><tr>
+           <td bgcolor=3D"#ffffff" style=3D"background-color:#ffffff; borde=
+r-top:4px solid #EB1000;">
+           <!-- BEGIN email content -->
+			  =20
+            <!-- pod1 -->
+            <table class=3D"email-width" align=3D"center" width=3D"500" bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" bgcolor=
+=3D"#ffffff" style=3D"background-color:#ffffff; width:500px;">
+             <tbody><tr>
+				 <td style=3D"color:#000000; font-family:adobe-clean, Helvetica Neue, H=
+elvetica, Verdana, Arial, sans-serif; font-size:12px; line-height:18px; pad=
+ding-top:50px;">
+					 <table align=3D"left" width=3D"auto" border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" role=3D"presentation">
+					  <tbody><tr>
+						<td style=3D"color:#EB1000; font-family:adobe-clean, Helvetica Neue, =
+Helvetica, Verdana, Arial, sans-serif; font-size:12px; line-height:18px;"><=
+img alt=3D"Adobe" src=3D"https://landing.adobe.com/dam/global/images/adobe-=
+logo.420x110.png" width=3D"108" height=3D"auto" border=3D"0" hspace=3D"0" v=
+space=3D"0" style=3D"color:#EB1000; font-family:adobe-clean, Helvetica Neue=
+, Helvetica, Verdana, Arial, sans-serif; font-size:12px; line-height:18px; =
+display:block; vertical-align:top;"/></td>
+					=09
+					  </tr>
+					</tbody></table>
+				 </td>
+             </tr>
+			 <tr>
+            	<td style=3D"color:#505050; font-family:adobe-clean, Helvetica=
+ Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-height:2=
+6px; padding-top:70px;">Dear Joshua,</td>
+             </tr>
+			 <tr>
+            	<td style=3D"color:#505050; font-family:adobe-clean, Helvetica=
+ Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-height:2=
+6px; padding-top:30px;">Welcome to Adobe Acrobat Pro. Your subscription let=
+s you work with PDFs from anywhere. Download your desktop software now to g=
+et started.</td>
+             </tr>
+             <tr>
+            	<td style=3D"color:#747474; font-family:adobe-clean, Helvetica=
+ Neue, Helvetica, Verdana, Arial, sans-serif; font-size:16px; line-height:2=
+0px; padding-top:30px;"><a href=3D"https://postoffice.adobe.com/po-server/l=
+ink/redirect?target=3DeyJhbGciOiJIUzUxMiJ9.eyJ0ZW1wbGF0ZSI6InlvZGFfYXByb193=
+ZWxjb21lX2VtYWlsIiwiZW1haWxBZGRyZXNzIjoiam9zaEBzdWJsaW1lc2VjdXJpdHkuY29tIiw=
+icmVxdWVzdElkIjoiYmM4ZTczMjgtOTg0Zi00ODJlLTkwZDMtNDk5MzllNTNlOGM0IiwibGluay=
+I6Imh0dHBzOi8vd3d3LmFkb2JlLmNvbS9nby9kb3dubG9hZC1hY3JvYmF0IiwibGFiZWwiOiI4I=
+iwidGVtcGxhdGVBQlZlcnNpb24iOiJCIiwibG9jYWxlIjoiZW5fVVMifQ.w04dG25G9Hf5cS7qj=
+TFVehG07CdANgGG-3Bz-2mpt3kiCVG96Jd02Ost4WNXePjuWkIs4Afqq10S0dlRCg_KVw" targ=
+et=3D"_blank" style=3D"border:2px solid #747474;border-radius:20px;color:#7=
+47474;display:inline-block;font-size:16px;line-height:16px;padding:10px;out=
+line:none;text-align:center;text-decoration:none;width:180px;-webkit-text-s=
+ize-adjust:none;"><strong>Download Acrobat</strong></a></td>
+             </tr>
+			 <tr>
+            	<td style=3D"color:#505050; font-family:adobe-clean, Helvetica=
+ Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-height:2=
+6px; padding-top:30px;">Acrobat Pro lets you:</td>
+             </tr>
+			 <tr>
+            	<td style=3D"color:#505050; font-family:adobe-clean, Helvetica=
+ Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-height:2=
+6px; padding-top:30px; padding-bottom:40px;">
+					<table align=3D"left" width=3D"auto" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation">
+					  <tbody><tr>
+						<td valign=3D"top" style=3D"color:#505050; font-family:adobe-clean, H=
+elvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-=
+height:26px;">=E2=80=A2</td>
+						<td width=3D"20" style=3D"width:20px;">=C2=A0</td>
+						<td valign=3D"top" style=3D"color:#505050; font-family:adobe-clean, H=
+elvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-=
+height:26px;">Edit text and images right in your PDF.</td>
+					  </tr>
+					  <tr>
+						<td valign=3D"top" style=3D"color:#505050; font-family:adobe-clean, H=
+elvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-=
+height:26px;">=E2=80=A2</td>
+						<td width=3D"20" style=3D"width:20px;">=C2=A0</td>
+						<td valign=3D"top" style=3D"color:#505050; font-family:adobe-clean, H=
+elvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-=
+height:26px;">Convert PDFs to Microsoft Word, PowerPoint, Excel, and more.<=
+/td>
+					  </tr>
+					  <tr>
+						<td valign=3D"top" style=3D"color:#505050; font-family:adobe-clean, H=
+elvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-=
+height:26px;">=E2=80=A2</td>
+						<td width=3D"20" style=3D"width:20px;">=C2=A0</td>
+						<td valign=3D"top" style=3D"color:#505050; font-family:adobe-clean, H=
+elvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-=
+height:26px;">Combine multiple files into one PDF and organize pages.
+</td>
+					  </tr>
+					  <tr>
+						<td valign=3D"top" style=3D"color:#505050; font-family:adobe-clean, H=
+elvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-=
+height:26px;">=E2=80=A2</td>
+						<td width=3D"20" style=3D"width:20px;">=C2=A0</td>
+						<td valign=3D"top" style=3D"color:#505050; font-family:adobe-clean, H=
+elvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-=
+height:26px;">Collect feedback from others in one PDF online.
+</td>
+					  </tr>
+					  <tr>
+						<td valign=3D"top" style=3D"color:#505050; font-family:adobe-clean, H=
+elvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-=
+height:26px;">=E2=80=A2</td>
+						<td width=3D"20" style=3D"width:20px;">=C2=A0</td>
+						<td valign=3D"top" style=3D"color:#505050; font-family:adobe-clean, H=
+elvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-=
+height:26px;">Send files to others for e-signing and track responses in rea=
+l time.</td>
+					  </tr>
+					</tbody></table>
+				</td>
+             </tr>
+			 <tr>
+            	<td style=3D"color:#505050; font-family:adobe-clean, Helvetica=
+ Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-height:2=
+6px; padding-top:40px; border-top:1px solid #eaeaea;">You can access Acroba=
+t tools in three ways when you sign in:</td>
+             </tr>
+			 <tr>
+            	<td style=3D"color:#505050; font-family:adobe-clean, Helvetica=
+ Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-height:2=
+6px; ">
+					<table align=3D"left" width=3D"auto" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation">
+                      <tbody><tr>
+						<td align=3D"center" valign=3D"top" style=3D"color:#000000; font-fami=
+ly:adobe-clean, Arial, Helvetica, sans-serif; font-size:14px; line-height:2=
+0px; padding-top:30px;"><img alt=3D"" src=3D"http://landing.adobe.com/dam/g=
+lobal/images/monitor-icon-707070-54x51.png" width=3D"28" height=3D"auto" bo=
+rder=3D"0" hspace=3D"0" vspace=3D"0" style=3D"display:block; vertical-align=
+:top;"/></td>
+						<td width=3D"12" style=3D"width:12px;">=C2=A0</td>
+						<td valign=3D"top" style=3D"color:#505050; font-family:adobe-clean, H=
+elvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-=
+height:26px; padding-top:28px;">Download <a href=3D"https://postoffice.adob=
+e.com/po-server/link/redirect?target=3DeyJhbGciOiJIUzUxMiJ9.eyJ0ZW1wbGF0ZSI=
+6InlvZGFfYXByb193ZWxjb21lX2VtYWlsIiwiZW1haWxBZGRyZXNzIjoiam9zaEBzdWJsaW1lc2=
+VjdXJpdHkuY29tIiwicmVxdWVzdElkIjoiYmM4ZTczMjgtOTg0Zi00ODJlLTkwZDMtNDk5MzllN=
+TNlOGM0IiwibGluayI6Imh0dHBzOi8vd3d3LmFkb2JlLmNvbS9nby9kb3dubG9hZC1hY3JvYmF0=
+IiwibGFiZWwiOiI5IiwidGVtcGxhdGVBQlZlcnNpb24iOiJCIiwibG9jYWxlIjoiZW5fVVMifQ.=
+q84ZTyQAOuhmQGfmPtqSkIXS6FANkPkgKs7b0SIAIVC6nvVR6j82tTo0C_ASaCQIohNZcUg3jWo=
+KNCY-sfBZHw" target=3D"_blank" style=3D"color:#1F4EE8; text-decoration:none=
+;">Acrobat Pro</a> to use  tools on your desktop.</td>
+					  </tr>
+					  <tr>
+						<td align=3D"center" valign=3D"top" style=3D"color:#000000; font-fami=
+ly:adobe-clean, Arial, Helvetica, sans-serif; font-size:14px; line-height:2=
+0px; padding-top:30px;"><img alt=3D"" src=3D"http://landing.adobe.com/dam/g=
+lobal/images/browser-icon-707070-54x54.png" width=3D"28" height=3D"auto" bo=
+rder=3D"0" hspace=3D"0" vspace=3D"0" style=3D"display:block; vertical-align=
+:top;"/></td>
+						<td width=3D"12" style=3D"width:12px;">=C2=A0</td>
+						<td valign=3D"top" style=3D"color:#505050; font-family:adobe-clean, H=
+elvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-=
+height:26px; padding-top:30px;">Open <a href=3D"https://postoffice.adobe.co=
+m/po-server/link/redirect?target=3DeyJhbGciOiJIUzUxMiJ9.eyJ0ZW1wbGF0ZSI6Inl=
+vZGFfYXByb193ZWxjb21lX2VtYWlsIiwiZW1haWxBZGRyZXNzIjoiam9zaEBzdWJsaW1lc2VjdX=
+JpdHkuY29tIiwicmVxdWVzdElkIjoiYmM4ZTczMjgtOTg0Zi00ODJlLTkwZDMtNDk5MzllNTNlO=
+GM0IiwibGluayI6Imh0dHBzOi8vd3d3LmFkb2JlLmNvbS9nby9hY3JvYmF0LW9ubGluZSIsImxh=
+YmVsIjoiMTAiLCJ0ZW1wbGF0ZUFCVmVyc2lvbiI6IkIiLCJsb2NhbGUiOiJlbl9VUyJ9.jwe9Ks=
+lgDhb1SpacoUnySVtZ1dtHU4CFI_rHeh-LGB7dDo8Fubo0ASWZmEcvwpU_c_k_fLp3NiB23sZ6L=
+6ONfA" target=3D"_blank" style=3D"color:#1F4EE8; text-decoration:none;">Acr=
+obat online services</a> in any browser.</td>
+					  </tr>
+					 =20
+					 =20
+					  <tr>
+						<td align=3D"center" valign=3D"top" style=3D"color:#000000; font-fami=
+ly:adobe-clean, Arial, Helvetica, sans-serif; font-size:14px; line-height:2=
+0px; padding-top:30px;"><img alt=3D"" src=3D"http://landing.adobe.com/dam/g=
+lobal/images/phone-icon-707070-54x53.png" width=3D"28" height=3D"auto" bord=
+er=3D"0" hspace=3D"0" vspace=3D"0" style=3D"display:block; vertical-align:t=
+op;"/></td>
+						<td width=3D"12" style=3D"width:12px;">=C2=A0</td>
+						<td valign=3D"top" style=3D"color:#505050; font-family:adobe-clean, H=
+elvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-=
+height:26px; padding-top:26px;">Work on your mobile device by downloading t=
+he <a href=3D"https://postoffice.adobe.com/po-server/link/redirect?target=
+=3DeyJhbGciOiJIUzUxMiJ9.eyJ0ZW1wbGF0ZSI6InlvZGFfYXByb193ZWxjb21lX2VtYWlsIiw=
+iZW1haWxBZGRyZXNzIjoiam9zaEBzdWJsaW1lc2VjdXJpdHkuY29tIiwicmVxdWVzdElkIjoiYm=
+M4ZTczMjgtOTg0Zi00ODJlLTkwZDMtNDk5MzllNTNlOGM0IiwibGluayI6Imh0dHBzOi8vd3d3L=
+mFkb2JlLmNvbS9nby9yZWFkZXItbW9iaWxlLWFwcCIsImxhYmVsIjoiMTEiLCJ0ZW1wbGF0ZUFC=
+VmVyc2lvbiI6IkIiLCJsb2NhbGUiOiJlbl9VUyJ9.jplkD0t1UfgDmINEfer1K4BpB5ASO9LhKR=
+cfug-KTrUFMULCcp9jB_kLtGWMI9kYc2J5XYnlj46a0ymlugtHmg" target=3D"_blank" sty=
+le=3D"color:#1F4EE8; text-decoration:none;">Adobe Acrobat Reader app</a>.</=
+td>
+					  </tr>
+					</tbody></table>
+				</td>
+             </tr>
+			=20
+			 <tr>
+            	<td style=3D"color:#505050; font-family:adobe-clean, Helvetica=
+ Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-height:2=
+6px; padding-top:30px;">Thank you for being a valued customer,</td>
+             </tr>
+			 <tr>
+            	<td style=3D"color:#505050; font-family:adobe-clean, Helvetica=
+ Neue, Helvetica, Verdana, Arial, sans-serif; font-size:18px; line-height:2=
+6px; padding-top:30px; padding-bottom:100px;">The Adobe Acrobat Team</td>
+             </tr>
+            </tbody></table>
+            <!-- END pod1 -->
+           =20
+           <!-- END email content -->
+           </td>
+        </tr>
+		<tr>
+		<td bgcolor=3D"#F4F4F4" style=3D"background-color:#F4F4F4;">
+		 =20
+		  <!-- legal-->
+		  <table class=3D"email-width" align=3D"center" width=3D"500" border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" bgcolor=3D"#F4F=
+4F4" style=3D"background-color:#F4F4F4; width:500px;">
+			<tbody><tr>
+			  <td style=3D"color:#EB1000; font-family:adobe-clean, Helvetica Neue, H=
+elvetica, Verdana, Arial, sans-serif; font-size:12px; line-height:18px; pad=
+ding-top:40px;"><img alt=3D"Adobe" src=3D"http://landing.adobe.com/dam/glob=
+al/images/adobe-logo.classic.160x222.png" width=3D"30" height=3D"auto" bord=
+er=3D"0" hspace=3D"0" vspace=3D"0" style=3D"color:#EB1000; font-family:adob=
+e-clean, Helvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:1=
+2px; line-height:18px; display:block; vertical-align:top;"/></td>
+			</tr>
+			<tr>
+			  <td class=3D"legal" style=3D"color:#959595; font-family:adobe-clean, H=
+elvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:16px; line-=
+height:20px; padding-top:60px;"><a href=3D"https://postoffice.adobe.com/po-=
+server/link/redirect?target=3DeyJhbGciOiJIUzUxMiJ9.eyJ0ZW1wbGF0ZSI6InlvZGFf=
+YXByb193ZWxjb21lX2VtYWlsIiwiZW1haWxBZGRyZXNzIjoiam9zaEBzdWJsaW1lc2VjdXJpdHk=
+uY29tIiwicmVxdWVzdElkIjoiYmM4ZTczMjgtOTg0Zi00ODJlLTkwZDMtNDk5MzllNTNlOGM0Ii=
+wibGluayI6Imh0dHBzOi8vd3d3LmFkb2JlLmNvbS9nby9hY3JvYmF0LW9ubGluZSIsImxhYmVsI=
+joiMTIiLCJ0ZW1wbGF0ZUFCVmVyc2lvbiI6IkIiLCJsb2NhbGUiOiJlbl9VUyJ9.57f16Ut5nHr=
+S_8F1DCXog-igeRbQMt1-dDjS2Z3vlbb7kbsD6ZtasWOz8BzwNAN60PEm3cb6W2fwLWLzL0T5_w=
+" target=3D"_blank" style=3D"color:#959595; text-decoration:underline;">Sig=
+n in</a><br/><br/>
+			  <a href=3D"https://postoffice.adobe.com/po-server/link/redirect?target=
+=3DeyJhbGciOiJIUzUxMiJ9.eyJ0ZW1wbGF0ZSI6InlvZGFfYXByb193ZWxjb21lX2VtYWlsIiw=
+iZW1haWxBZGRyZXNzIjoiam9zaEBzdWJsaW1lc2VjdXJpdHkuY29tIiwicmVxdWVzdElkIjoiYm=
+M4ZTczMjgtOTg0Zi00ODJlLTkwZDMtNDk5MzllNTNlOGM0IiwibGluayI6Imh0dHBzOi8vd3d3L=
+mFkb2JlLmNvbS9nby9sZWFybi1kYyIsImxhYmVsIjoiMTMiLCJ0ZW1wbGF0ZUFCVmVyc2lvbiI6=
+IkIiLCJsb2NhbGUiOiJlbl9VUyJ9.U4jdGchLD-01A-M_bitcbHdGVg4JAhQxbtXIsVPVPpQMhv=
+nlXAg90Sec01QXj4eqrxiitfX121IsspmHgBMx9Q" target=3D"_blank" style=3D"color:=
+#959595; text-decoration:underline;">Learn</a><br/><br/>
+			  <a href=3D"https://postoffice.adobe.com/po-server/link/redirect?target=
+=3DeyJhbGciOiJIUzUxMiJ9.eyJ0ZW1wbGF0ZSI6InlvZGFfYXByb193ZWxjb21lX2VtYWlsIiw=
+iZW1haWxBZGRyZXNzIjoiam9zaEBzdWJsaW1lc2VjdXJpdHkuY29tIiwicmVxdWVzdElkIjoiYm=
+M4ZTczMjgtOTg0Zi00ODJlLTkwZDMtNDk5MzllNTNlOGM0IiwibGluayI6Imh0dHBzOi8vd3d3L=
+mFkb2JlLmNvbS9nby9zdXBwb3J0LWRjIiwibGFiZWwiOiIxNCIsInRlbXBsYXRlQUJWZXJzaW9u=
+IjoiQiIsImxvY2FsZSI6ImVuX1VTIn0.KpOqp5IyZAIFhzqjFEfehTSD3fGygNHgMYkq8KaDPrM=
+_jgUFfzDiJLKIFxrX6ZnSxeABRJVBdTFoJkO6bUf4WQ" target=3D"_blank" style=3D"col=
+or:#959595; text-decoration:underline;">Support</a>
+			  </td>
+			</tr>
+			<tr>
+			  <td class=3D"legal" style=3D"color:#959595; font-family:adobe-clean, H=
+elvetica Neue, Helvetica, Verdana, Arial, sans-serif; font-size:12px; line-=
+height:18px; padding-top:60px; padding-bottom:100px;">Adobe, the Adobe logo=
+, Acrobat, and Acrobat Reader are either registered trademarks or trademark=
+s of Adobe in the United States and/or other countries. All other trademark=
+s are the property of their respective owners.
+<br/><br/>
+			  Adobe, 345 Park Avenue, San Jose, CA 95110 USA.			  </td>
+			</tr>
+		  </tbody></table>
+		  <!-- END legal-->
+		=09
+		</td>
+	  </tr>
+    </tbody></table>
+    </td>
+  </tr>
+</tbody></table>
+ =20
+</body></html>
+------=_Part_277295_627922069.1683834477695--
