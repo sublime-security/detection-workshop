@@ -23,7 +23,7 @@ X-Virus-Status: clean(F-Secure/fsigk_smtp/521/virusgw2201.xserver.jp)
 Received: from [127.0.0.1] (unknown [20.243.19.54])
 	by sv2211.xserver.jp (Postfix) with ESMTPSA id 1D0DA4038B04E7
 	for <kim.chretien@tyrellcorp.com>; Tue, 30 May 2023 02:02:14 +0900 (JST)
-From: "IT Administrators" <bobby.robbins@tyrellcorp.com>
+From: "IT Administrators <bobby.robbins@tyrellcorp.com>" <noreply@tyrellcorp.com>
 To: "Bobby Robbins" <bobby.robbins@tyrellcorp.com>
 Subject: IT Security Attestation Contract
 Date: Tue, 25 Jul 2023 09:00:00 UTC
