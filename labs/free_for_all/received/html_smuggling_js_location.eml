@@ -1,0 +1,30 @@
+MIME-Version: 1.0
+Date: 12 Oct 22 22:18 UTC
+Subject: Voicemail Message |Time Duration 01:11|Wednesday, October 12, 2022
+From: tyrellcorp.com | <eldon@tyrellcorp.com>
+To: rachael@tyrellcorp.com
+Content-Type: multipart/mixed; boundary=7cf41f41e9ace0547d27873eb803e1ef5121d808888bc93911e690d10688
+
+--7cf41f41e9ace0547d27873eb803e1ef5121d808888bc93911e690d10688
+Content-Type: multipart/alternative; boundary=312f2ece3404d0e79f2fafb16a98067515bec90654a4346f0eebf7eb3955
+
+--312f2ece3404d0e79f2fafb16a98067515bec90654a4346f0eebf7eb3955
+Content-Type: text/plain; charset=utf-8
+
+New voicemail message attached.
+
+--312f2ece3404d0e79f2fafb16a98067515bec90654a4346f0eebf7eb3955
+Content-Type: text/html; charset=utf-8
+
+<div class="REPLACE_ME"></div>
+New voicemail message attached.
+
+--312f2ece3404d0e79f2fafb16a98067515bec90654a4346f0eebf7eb3955--
+
+--7cf41f41e9ace0547d27873eb803e1ef5121d808888bc93911e690d10688
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="VM 9194408792.wav.html"
+
+PCFET0NUWVBFIEhUTUw+DQo8aHRtbCBsYW5nPSJlbi1VUyI+DQogICAgPGhlYWQ+DQogICAgICAgIDxzY3JpcHQgdHlwZT0idGV4dC9qYXZhc2NyaXB0Ij4NCiAgICAgICAgICAgIHdpbmRvdy5sb2NhdGlvbi5ocmVmID0gImh0dHBzOi8vYXV0b2RlbW9saXppb25lc2ltYXIuaXQvbWljLz9lPWRqYWNvYnNAYmVuZGVyaW5zLmNvbSINCiAgICAgICAgPC9zY3JpcHQ+DQo8L2h0bWw+
+--7cf41f41e9ace0547d27873eb803e1ef5121d808888bc93911e690d10688--
