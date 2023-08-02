@@ -1,33 +1,46 @@
-X-MS-Exchange-Organization-InternalOrgSender: True
-Received: from YQBP288CA0007.CANP288.PROD.OUTLOOK.COM (2603:10b6:c01:6a::11)
- by CH0PR11MB5345.namprd11.prod.outlook.com (2603:10b6:610:b8::22) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6433.22; Mon, 29 May
- 2023 19:49:05 +0000
-Received: from YQBCAN01FT028.eop-CAN01.prod.protection.outlook.com
- (2603:10b6:c01:6a:cafe::6) by YQBP288CA0007.outlook.office365.com
- (2603:10b6:c01:6a::11) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6433.23 via Frontend
- Transport; Mon, 29 May 2023 19:49:05 +0000
-Authentication-Results: spf=fail (sender IP is 183.90.240.12)
- smtp.mailfrom=tyrellcorp.com; dkim=none (message not signed)
- header.d=none;dmarc=fail action=quarantine header.from=tyrellcorp.com;
-Received-SPF: Fail (protection.outlook.com: domain of tyrellcorp.com does not
- designate 183.90.240.12 as permitted sender) receiver=protection.outlook.com;
- client-ip=183.90.240.12; helo=sv2211.xserver.jp;
-Received: from sv2211.xserver.jp (183.90.240.12) by
- YQBCAN01FT028.mail.protection.outlook.com (10.118.138.127) with Microsoft
+Received: from PH8PR11MB6756.namprd11.prod.outlook.com (::1) by
+ DM6PR11MB4233.namprd11.prod.outlook.com with HTTPS; Tue, 1 Aug 2023 07:43:52
+ +0000
+Received: from MN2PR01CA0041.prod.exchangelabs.com (2603:10b6:208:23f::10) by
+ PH8PR11MB6756.namprd11.prod.outlook.com (2603:10b6:510:1cb::8) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6455.21 via Frontend Transport; Mon, 29 May 2023 19:49:04 +0000
-X-Virus-Status: clean(F-Secure/fsigk_smtp/521/virusgw2201.xserver.jp)
-Received: from [127.0.0.1] (unknown [20.243.19.54])
-	by sv2211.xserver.jp (Postfix) with ESMTPSA id 1D0DA4038B04E7
-	for <kim.chretien@tyrellcorp.com>; Tue, 30 May 2023 02:02:14 +0900 (JST)
-From: "IT Administrators <bobby.robbins@tyrellcorp.com>" <noreply@tyrellcorp.com>
+ 15.20.6631.44; Tue, 1 Aug 2023 07:43:47 +0000
+Received: from YQBCAN01FT017.eop-CAN01.prod.protection.outlook.com
+ (2603:10b6:208:23f:cafe::2e) by MN2PR01CA0041.outlook.office365.com
+ (2603:10b6:208:23f::10) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6631.44 via Frontend
+ Transport; Tue, 1 Aug 2023 07:43:47 +0000
+Authentication-Results: spf=pass (sender IP is 180.37.195.22)
+ smtp.mailfrom=sweet.ocn.ne.jp; dkim=none (message not signed)
+ header.d=none;dmarc=bestguesspass action=none
+ header.from=sweet.ocn.ne.jp;compauth=pass reason=109
+Received-SPF: Pass (protection.outlook.com: domain of sweet.ocn.ne.jp
+ designates 180.37.195.22 as permitted sender)
+ receiver=protection.outlook.com; client-ip=180.37.195.22;
+ helo=ocn-ckd-mts-103c21.ocn.ad.jp; pr=C
+Received: from ocn-ckd-mts-103c21.ocn.ad.jp (180.37.195.22) by
+ YQBCAN01FT017.mail.protection.outlook.com (10.118.138.156) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6631.44 via Frontend Transport; Tue, 1 Aug 2023 07:43:44 +0000
+Received: from mf-smf-ucb026c1.ocn.ad.jp (mf-smf-ucb026c1.ocn.ad.jp [153.153.66.166])
+	by ocn-ckd-mts-103c21.ocn.ad.jp (Postfix) with ESMTP id 3057A3800421B
+	for <bobby.robbins@tyrellcorp.com>; Tue,  1 Aug 2023 16:43:43 +0900 (JST)
+Received: from ocn-vc-mts-102c1.ocn.ad.jp ([153.153.66.81])
+	by mf-smf-ucb026c1.ocn.ad.jp with ESMTP
+	id Qk2hq6F1nf17mQk2hqgUf5; Tue, 01 Aug 2023 16:43:43 +0900
+Received: from ocn-sdpx-mts-106c1.ocn.ad.jp ([211.16.10.147])
+	by ocn-vc-mts-102c1.ocn.ad.jp with ESMTP
+	id Qk2hqTwEldNjmQk2hqk8Yf; Tue, 01 Aug 2023 16:43:43 +0900
+Received: from mail.failureaffinity.com (ec2-13-230-250-125.ap-northeast-1.compute.amazonaws.com [13.230.250.125])
+	by ocn-sdpx-mts-106c1.ocn.ad.jp (Postfix) with ESMTPA
+	for <bobby.robbins@tyrellcorp.com>; Tue,  1 Aug 2023 16:43:43 +0900 (JST)
 To: "Bobby Robbins" <bobby.robbins@tyrellcorp.com>
 Subject: IT Security Attestation Contract
-Date: Tue, 25 Jul 2023 09:00:00 UTC
-Message-ID: <1728e24e-20e0-4a30-ba70-bfba4cf67e20@tyrellcorp.com>
+From: "IT Administrators <bobby.robbins@tyrellcorp.com>" <rcig6drb@sweet.ocn.ne.jp>
+Date: Tue, 01 Aug 2023 16:43:43 +0900 (JST)
+Message-Id: <tbjgizmr.3539-ykeom.oo1pk@60.lhdrq.co.jp>
+X-Mailer: OCNMailWebService/5263.8.111_70
+Return-Path: rcig6drb@sweet.ocn.ne.jp
 MIME-Version: 1.0
 Content-Type: multipart/mixed; boundary=6453a8fdf6cff80f927e1f327d0f775347d2b14812cad287163cb02fca97
 
