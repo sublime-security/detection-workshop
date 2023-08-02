@@ -1,0 +1,30 @@
+Message-ID: <27779988.1075862460326.JavaMail.evans@thyme>
+Date: Tue, 6 Nov 2001 11:57:16 -0800 (PST)
+From: Vasant Shanbhogue <vasant.shanbhogue@tyrellcorp.io>
+To: tanya.tamarchenko@tyrellcorp.io, rakesh.bharati@tyrellcorp.io
+Subject: Template for estimating TyrellCorp Capital needs
+Cc: j.kaminski@tyrellcorp.io, karthik.rajan@tyrellcorp.io
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Bcc: j.kaminski@tyrellcorp.io, karthik.rajan@tyrellcorp.io
+X-From: Vasant Shanbhogue <vasant.shanbhogue@tyrellcorp.io> Vasant </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=VSHANBH>
+X-To: Tamarchenko, Tanya </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=Ttamarc>, Bharati, Rakesh </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=Rbharati>
+X-cc: Kaminski, Vince J </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=Vkamins>, Rajan, Karthik </O=TYRELLCORP/OU=NA/CN=RECIPIENTS/CN=Krajan>
+X-bcc: 
+X-Folder: \VKAMINS (Non-Privileged)\Kaminski, Vince J\Inbox
+X-Origin: Kaminski-V
+X-FileName: VKAMINS (Non-Privileged).pst
+
+
+Hi guys,
+
+here is a simple template based on discussions with Vince and Rakesh.  It takes positions for a single commodity (physical and financial), collateral info, and calculates P&L and collateral needs over a one month horizon.
+
+This can be expanded to add pictorial info, and other expenses, and any other details as needed.
+
+This is just a first cut, please feel free to tear it apart as appropriate.
+
+Vasant
+
+ 
