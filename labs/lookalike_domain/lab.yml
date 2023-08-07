@@ -1,0 +1,16 @@
+name: Lookalike Domain
+description: Search for the lookalike sender domain
+details: |
+  # Lookalike Domain
+
+  ## Focus Areas
+  - Lookalike Domains
+  - Impersonation
+  - String similarity
+  - Levenshtein distance
+
+  ---
+  
+  ## Brief
+
+  Threat actors are sending messages impersonating TyrellCorp using a fake lookalike domain to solicit sensitive data.
