@@ -55,3 +55,20 @@ hints:
           )
         )
       )
+  
+  - markdown: |
+      We can be very specific with which files we expect to be present at each level of the downloaded ZIP with MQL like this:
+    source: |
+      type.inbound
+      and any(attachments,
+          .file_extension == "pdf" and 
+          any(file.explode(.),
+              any(.scan.pdf.urls,
+                  any(beta.linkanalysis(.).files_downloaded,
+                      any(file.explode(.), .depth == 0 and any(.flavors.yara, . == "encrypted_zip"))
+                      and any(file.explode(.), .depth == 1 and .file_extension == "iso")
+                      and any(file.explode(.), .depth == 2 and .file_extension == "lnk")
+                  )
+              )
+          )
+      )
