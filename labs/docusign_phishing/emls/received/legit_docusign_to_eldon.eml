@@ -1,0 +1,225 @@
+Delivered-To: eldon.tyrell@tyrellcorp.com
+Received: by 2002:a05:7000:9d0b:b0:479:6a6b:bc38 with SMTP id dy11csp530147mab;
+        Fri, 7 Apr 2023 15:02:18 -0700 (PDT)
+X-Google-Smtp-Source: AKy350a//zKvJdr87zgGgfmQkK9dfQXj9MWvlc2U27FUSydV1MbwOp9S7Ga/X/OL/gxN8T3oCUtm
+X-Received: by 2002:a67:b60b:0:b0:426:1c9d:17c6 with SMTP id d11-20020a67b60b000000b004261c9d17c6mr1087172vsm.23.1680904938643;
+        Fri, 07 Apr 2023 15:02:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680904938; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Htu4hMIPyOUX0y9x4No+Bj6cUuDegMy/1ZRvYpbhhr2p8GFn0v6SCqR5gdPDG/kdG8
+         BEE8uF076Q2I0wU/LgFTuFnT3Isr7eUEbAtaYPpwuMU4qgVUCLjnmBkklQjrVUVu/oSK
+         BSKPdpM2szjbMbTVj6+g6uDdIhRMcQM3PKwBNt4YJ96ITWYsV9DxSlswphjly3tXv8dx
+         4J6/XO625KUiV96fmft0HnzOyRgrhNYg5S1eEMGWBFa5JpCtlNAfhflRHFGHP1+Cr7V5
+         j6Xv69vIpM4jYRsHMzAB8gULTs+AnJJMjVhMFpnwsqxkx2lPgggenmrv8/MEZli6uTQN
+         dmyQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:subject:date:message-id:to:from:site-id:recipient-id
+         :reply-to:sender:dkim-signature;
+        bh=pSLabo1Radh+GcOh6f1FtfQXbbgcT/Lga8YFcPTsxDQ=;
+        b=yBN7Sbq+RFszS7s2XNjZOXGc+yl3NuZUwIEWzWzcSDvrNi6DzOGQpkQogtG/fCfa0B
+         jRoWFzB+e3bVthAd2KY9UWCzEhArHsmF2eYMAqYXu+iJXQodt/mlwJoPt6igzId48n5U
+         w2WFYCAcZykVQa13YqKaefcb+T64irL4OoE5SbjwGHi/KFFuw8rIcKY7WL9QLrNgdAwB
+         9ykk+Wixi0iSdeK4IC9X40WgxL2XU20pTX4FfyPaXWVGeYbbc1VjN9jprUhgxB2lqfFM
+         1yxrbcydsmFRTE5vDI2ocrVW43TlDZYDP9GtOtkfZq1ITlOPojr2pNcZAoFca0qzrAiu
+         MoNQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@docusign.net header.s=mail1 header.b=SuMVUjiY;
+       spf=pass (google.com: domain of dse_na4@docusign.net designates 64.207.219.72 as permitted sender) smtp.mailfrom=dse_NA4@docusign.net;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=docusign.net
+Return-Path: <dse_NA4@docusign.net>
+Received: from mailch.docusign.net (mailch.docusign.net. [64.207.219.72])
+        by mx.google.com with ESMTPS id r2-20020a67de82000000b00425ef0a95b4si916663vsk.408.2023.04.07.15.02.18
+        for <eldon.tyrell@tyrellcorp.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 07 Apr 2023 15:02:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dse_na4@docusign.net designates 64.207.219.72 as permitted sender) client-ip=64.207.219.72;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@docusign.net header.s=mail1 header.b=SuMVUjiY;
+       spf=pass (google.com: domain of dse_na4@docusign.net designates 64.207.219.72 as permitted sender) smtp.mailfrom=dse_NA4@docusign.net;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=docusign.net
+Received: from SE102FE32.corp.docusign.net (unknown [10.101.101.12]) by mailch.docusign.net (Postfix) with ESMTP id 1D65D401D120 for <eldon.tyrell@tyrellcorp.com>; Fri,
+  7 Apr 2023 22:02:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=docusign.net; s=mail1; t=1680904938; bh=xtXpoupeoZwLNnEwOsAS5QQsESPxPFV7SZ72jARCV/w=; h=From; b=SuMVUjiYKYCjAVsC8YjpKRXup4IuazzxwngtQeGR/8yY7R1/O1928r+OZWvxzWFTE
+	 ihQ7vm4LlZf8x5+1r3a2M8knn9JtzPeCtmcLptypxtxJeyhFdzjTaGz6XBXh0afYiE
+	 Orxcrh/CoGjjUoBMfafae8r7eude4q5qHMun1AL5zLib+xUOxGALhnmF3KeVNQPUgV
+	 ZdwskgfUr8YYemLevmZ+BY5ZffZm6M0mzL7o+xSECHFluqrKgBiITmcBiXy5+ovE4n
+	 fPwfautnrjybwwTWGyhLcuPef3gp8+Ctn+Udrk9/iZHW4fEQzjMAeoHvhryqDH7tqQ
+	 YiMKdd+T7JyEQ==
+Received: from docusign.net ([127.0.0.1]) by SE102FE32.corp.docusign.net with Microsoft SMTPSVC(10.0.17763.1697);
+	 Fri, 7 Apr 2023 15:02:17 -0700
+Sender: DocuSign NA4 System <dse_na4@docusign.net>
+Reply-To: Manuel Leverson <manuel.leverson@totallylegitcompany.com>
+Recipient-Id: 571448f4-6bbe-4d6b-99ab-c410cefc0052
+X-Debug: False
+X-Email-Rejection-Mode: LearningMode
+X-Api-Host: na2.docusign.net
+Site-Id: 2
+X-BounceEmailVersion: 1
+From: "Manuel Leverson via DocuSign" <dse_na4@docusign.net>
+To: "Eldon Tyrell" <eldon.tyrell@tyrellcorp.com>
+Message-ID: <f5a42c105d7f31dfaec8a2f87b9ff249@docusign.net>
+Date: Fri, 4 Aug 2023 01:19:54 -0700
+Subject: Reminder: Please review and sign the TLC License Agreement
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_EBACDA08_10F2_454D_A2CC_F4CEEBDE5098"
+
+MIME-Version: 1.0
+
+------=_NextPart_EBACDA08_10F2_454D_A2CC_F4CEEBDE5098
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello Eldon Tyrell,
+
+Manuel Leverson has sent you a new DocuSign document to view and sign. Please=
+ click on the link below to begin signing.
+
+Please review and sign the TLC License Agreement
+
+Notes
+
+Please review and sign the TLC License Agreement, you will receive=
+ a countersigned copy in due course. You are able to re-assign to the signa=
+tory if necessary.
+
+Manuel Leverson
+
+   =20
+
+REVIEW DOCUMENT
+
+https://docusign.net
+
+If clicking the link does not work, you can highlight and copy the entire l=
+ine above and paste it into your browser to get started.
+
+This message was sent to you by Manuel Leverson who is using the DocuSign Ele=
+ctronic Signature Service. If you would rather not receive email from this =
+sender you may contact the sender with your request.
+
+Do Not Share This Email
+This email contains a secure link to DocuSign. Please do not share this ema=
+il, link, or access code with others.
+
+Questions about the Document?
+If you need to modify the document or have questions about the details in t=
+he document, please reach out to the sender by emailing them directly.
+
+Stop receiving this email
+Report this email https://protect.docusign.net
+
+If you are having trouble signing the document, please visit the Help with =
+Signing page on our Support Center.
+https://support.docusign.com
+
+------=_NextPart_EBACDA08_10F2_454D_A2CC_F4CEEBDE5098
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html lang=3D"en"><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><m=
+eta name=3D"viewport" content=3D"initial-scale=3D1.0"><meta name=3D"format-=
+detection" content=3D"telephone=3Dno"><title>EnvelopeActivation</title></he=
+ad><body style=3D"background-color:#EAEAEA;padding:2%;font-family:Helvetica=
+,Arial,Sans Serif;"><div class=3D"mc-ip-hide"><div style=3D"color:#000000; =
+font-size:12px; text-align:left; font-family:Helvetica, Arial, sans-serif;"=
+><br></div><hr></div><table role=3D"presentation" =
+border=3D"0" cellspacing=3D"0" cellpadding=3D"0" align=3D"center" width=3D"=
+100%" dir=3D""><tr><td></td><td width=3D"640"><table role=3D"presentation" =
+style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse=
+;background-color:#ffffff;max-width:640px;"><tr><td style=3D"padding:10px 2=
+4px;"></td></tr><tr><td style=3D"padding:0px 24px 30px 24px;"><table rol=
+e=3D"presentation" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=
+=3D"100%" align=3D"center" style=3D"background-color:#3366FF;color:#ffffff;=
+"><tr><td style=3D"padding:28px 36px 36px 36px;border-radius:2px;background=
+-color:#3366FF;color:#ffffff;font-size:16px;font-family:Helvetica,Arial,San=
+s Serif;width:100%;text-align:center;" align=3D"center"><img width=3D"75" h=
+eight=3D"75" src=3D"https://na2.docusign.net/member/Images/email/docInvite-=
+white.png" style=3D"width:75px;height:75px;" alt=3D""><table role=3D"presen=
+tation" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%"><tr=
+><td style=3D"padding-top:24px;font-size:16px;font-family:Helvetica,Arial,S=
+ans Serif;border:none;text-align:center;color:#ffffff" align=3D"center"> Manuel=
+ Leverson sent you a document to review and sign. </td></tr></table><tabl=
+e role=3D"presentation" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" wi=
+dth=3D"100%"><tr><td align=3D"center" style=3D"padding-top:30px;"><div><tab=
+le cellspacing=3D"0" cellpadding=3D"0"><tr><td align=3D"center" height=3D"4=
+4" style=3D"font-size:15px;color:#333333;background-color:#ffc820;font-fami=
+ly:Helvetica,Arial,Sans Serif;font-weight:bold;text-align:center;text-decor=
+ation:none;;border-radius:2px;background-color:#ffc820;;display: block;"><a=
+ href=3D"https://docusign.net" style=3D"font-size:15px;color:#333333;background-color:#ff=
+c820;font-family:Helvetica,Arial,Sans Serif;font-weight:bold;text-align:cen=
+ter;text-decoration:none;;border-radius:2px;background-color:#ffc820;;displ=
+ay:inline-block"><span style=3D"padding:0px 24px;;line-height:44px;"><!--[i=
+f mso]>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<![endif]--> REVIEW DOCUMENT <!-=
+-[if mso]>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<![endif]--></span></a></td><=
+/tr></table></div></td></tr></table></td></tr></table></td></tr><tr><td sty=
+le=3D"padding:0px 24px 24px 24px;color:#000000;font-size:16px;font-family:H=
+elvetica,Arial,Sans Serif;background-color:white;"><table role=3D"presentat=
+ion" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tr><td style=3D"padd=
+ing-bottom:20px;"><div style=3D"font-family:Helvetica,Arial,Sans Serif;font=
+-weight:bold;line-height:18px;font-size:15px;color:#333333;"> Manuel Leverson=
+ </div><div style=3D"font-family:Helvetica,Arial,Sans Serif;line-height:18p=
+x;font-size:15px;color:#666666;">manuel.leverson@totallylegitcompany.com</div></td></tr>=
+</table><div style=3D"font-size:15px;color:#333333;padding:20px;border-radi=
+us:2px;border:1px solid #dddddd;margin-bottom:20px;"><div style=3D"font-siz=
+e:11px;font-weight:bold;color:#666666;padding-bottom:20px;">PRIVATE MESSAGE=
+</div> Please review and sign the TLC License Agreement, you will =
+receive a countersigned copy in due course. You are able to re-assign to th=
+e signatory if necessary.<br><br> Manuel Leverson</div><span style=3D"font-si=
+ze:15px;color:#333333;font-family:Helvetica,Arial,Sans Serif;line-height:20=
+px;">Please review and sign the TLC License Agreement<br></spa=
+n><br></td></tr><tr><td style=3D"padding:0px 24px 12px 24px;background-colo=
+r:#ffffff;font-family:Helvetica,Arial,Sans Serif;font-size:11px;color:#6666=
+66;"><table border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><td=
+ valign=3D"top" style=3D"font-family: Helvetica,Arial,Sans Serif; font-size=
+: 11px; color: #666666; vertical-align: top;"><div style=3D"font-family:Hel=
+vetica,Arial,Sans Serif; font-size:11px; color:#666666; padding: 2px 5px 0 =
+0;">Powered by&nbsp;</div></td><td><img src=3D"https://na2.docusign.net/Sig=
+ning/Images/email/Email_PowerByLogo.png" height=3D"19" alt=3D"DocuSign" sty=
+le=3D"border:none;"></td></tr></tbody></table></td></tr><tr><td style=3D"pa=
+dding:30px 24px 45px 24px;background-color:#EAEAEA;"><p style=3D"margin-bot=
+tom:1em;font-family:Helvetica,Arial,Sans Serif;font-size:13px;color:#666666=
+;line-height:18px;"><b aria-level=3D"3" role=3D"heading">Do Not Share This =
+Email</b><br> This email contains a secure link to DocuSign. Please do not =
+share this email, link, or access code with others.<br></p><p style=3D"marg=
+in-bottom:1em;font-family:Helvetica,Arial,Sans Serif;font-size:13px;color:#=
+666666;line-height:18px;"><b aria-level=3D"3" role=3D"heading">Alternate Si=
+gning Method</b><br> Visit DocuSign.com, click 'Access Documents', and ente=
+r the security code:<br> D6B554938EA6FDE7S3F54567812305702 </p><p style=3D"=
+margin-bottom:1em;font-family:Helvetica,Arial,Sans Serif;font-size:13px;col=
+or:#666666;line-height:18px;"><b aria-level=3D"3" role=3D"heading">About Do=
+cuSign</b><br> Sign documents electronically in just minutes. It's safe, se=
+cure, and legally binding. Whether you're in an office, at home, on-the-go =
+-- or even across the globe -- DocuSign provides a professional trusted sol=
+ution for Digital Transaction Management=E2=84=A2. </p><p style=3D"margin-b=
+ottom:1em;font-family:Helvetica,Arial,Sans Serif;font-size:13px;color:#6666=
+66;line-height:18px;"><b aria-level=3D"3" role=3D"heading">Questions about =
+the Document?</b><br> If you need to modify the document or have questions =
+about the details in the document, please reach out to the sender by emaili=
+ng them directly.<br><br><b aria-level=3D"3" role=3D"heading">Stop receivin=
+g this email</b><br><a href=3D"https://protect.docusign.net" style=3D"color:#2463d1;">Report =
+this email</a> or read more about <a href=3D"https://support.docusign.com" style=3D"color:#24=
+63d1;">Declining to sign</a> and <a href=3D"https://support.docusign.com" style=3D"color:#246=
+3d1;">Managing notifications</a>.<br><br> If you are having trouble signing=
+ the document, please visit the <a href=3D"https://support.docusign.com" style=3D"color:#2463=
+d1;">Help with Signing</a> page on our <a href=3D"https://docusign.com" style=3D"color:#2463d=
+1;">Support Center</a>.<br><br></p><p style=3D"margin-bottom:1em;font-famil=
+y:Helvetica,Arial,Sans Serif;font-size:13px;color:#666666;line-height:18px;=
+"><a href=3D"https://docusign.com" style=3D"color:#2463d1;"><img style=3D"margin-right:7px;bo=
+rder:none;vertical-align:middle;" width=3D"18" height=3D"18" src=3D"https:/=
+/na2.docusign.net/Member/Images/email/icon-DownloadApp-18x18@2x.png" alt=3D=
+"">Download the DocuSign App </a></p><p style=3D"margin-bottom:1em;font-fam=
+ily:Helvetica,Arial,Sans Serif;font-size:13px;color:#666666;line-height:18p=
+x;font-size:10px;line-height:14px;">This message was sent to you by Manuel=
+Leverson who is using the DocuSign Electronic Signature Service. If you would=
+ rather not receive email from this sender you may contact the sender with =
+your request.</p></td></tr></table></td><td></td></tr></table><span itemsco=
+pe=3D"" itemtype=3D"http://schema.org/EmailMessage"><meta itemprop=3D"text"=
+ content=3D"Manuel Leverson sent you a document to review and sign."><span it=
+emscope=3D"" itemprop=3D"about" itemtype=3D"http://schema.org/CreativeWork"=
+><span itemscope=3D"" itemprop=3D"action" itemtype=3D"http://schema.org/Vie=
+wAction"><meta itemprop=3D"url" content=3D"https://na2.docusign.net/Signing=
+/EmailStart.aspx"><meta itemprop=3D"name" content=3D"View Documents"></span></span></span>=
+</body></html>
+
+------=_NextPart_EBACDA08_10F2_454D_A2CC_F4CEEBDE5098--

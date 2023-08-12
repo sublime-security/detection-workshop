@@ -1,0 +1,41 @@
+name:  2. Payroll Fraud
+description: Hunt for the Payroll Fraud
+details: |
+  ## Brief
+
+  Phishing emails are being received impersonating staff members.
+
+  These emails target HR/Finance staff and request a change to the bank details used for salary payments.
+
+  ---
+
+  ## Focus Areas
+  - Sender analysis
+  - Header analysis
+  - Content analysis
+  - NLU (Natural Language Understanding)
+
+hints:
+  - markdown: |
+      For this lab, we can filter for emails that have an known organisation display name, but are not a previous sender:
+    source: |
+      type.inbound
+      and sender.display_name in $org_display_names
+      and sender.email.email not in $sender_emails
+
+  - markdown: |
+      To filter for emails only destined for HR people, we could use something like this which leverages a list for dynamic lookup:
+    source: |
+      type.inbound
+      and any(recipients.to, any($hr_users, .email == ..email.email))
+
+  - markdown: |
+      To analyse the tone and intent of the message with our Natural Language Understanding ML, we could use something like this, which also looks for a specific financial 'entity' in the body:
+    source: |
+      type.inbound
+      and any(ml.nlu_classifier(coalesce(body.html.display_text, body.plain.raw)).intents,
+        .name in ("bec") and .confidence == "high"
+      )
+      and any(ml.nlu_classifier(coalesce(body.html.display_text, body.plain.raw)).entities,
+        .name == "financial" and strings.icontains(.text, "salary")
+      )

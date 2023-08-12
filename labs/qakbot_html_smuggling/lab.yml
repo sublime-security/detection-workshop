@@ -1,0 +1,47 @@
+name: 4. Qakbot HTML Smuggling
+description: Hunt for Qakbot HTML Smuggling
+details: |
+  ## Brief
+
+  A QakBot malware delivery mechanism.
+
+  It leverages an HTML Smuggled ZIP, which contains an ISO.
+
+  The ISO contains a VBS script which launches a PowerShell script and subsequently a DLL to achieve infection!
+
+  ---
+
+  ## Focus Areas
+  - Attachment analysis
+  - HTML smuggling
+
+hints:
+  - markdown: |
+      For this lab, we're concerned with HTML-based email attachments, which we could hunt for like this, either using a known file extension or the analysed file type:
+    source: |
+      type.inbound and 
+      any(attachments, 
+        regex.icontains(.file_extension, '^[sdx]{0,1}ht[ml]{0,2}') or 
+        .file_type == 'html'
+      )
+  
+  - markdown: |
+      We could look in the file for specific string snippets using MQL like this:
+    source: |
+      type.inbound
+      and any(attachments, 
+        .file_extension in ("html", "htm") and 
+        any(file.explode(.), 
+            any(.scan.strings.strings, strings.ilike(.,
+                // Double Base64 encoded zips
+                "*VUVzREJCUUFBUUFJQ*",
+                "*VFc0RCQlFBQVFBSU*",
+                "*VRXNEQkJRQUFRQUlB*",
+                // Reversed base64 strings double encoded zips
+                "*QJFUUBFUUCJERzVUV*",
+                "*USBFVQBFlQCR0cFV*",
+                "*BlUQRFUQRJkQENXRV*"
+            )
+        )
+      )
+    )

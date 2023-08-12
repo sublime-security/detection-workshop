@@ -1,0 +1,64 @@
+name: 7. DocuSign Phishing
+description: Hunt for the fake DocuSign
+details: |
+  ## Brief
+
+  Threat actors are sending fake 'DocuSign' emails.
+
+  These emails contain a single image that displays all body content, including DocuSign branding and a fake button to review the document.
+
+  On click, the user is sent to an attacker-controlled site.
+
+  ---
+  
+  ## Focus Areas
+  - Sender Email Characteristics
+  - Attachment Content
+  - Links
+  - NLU
+
+hints:
+  - markdown: |
+      For this lab, we want to focus on emails with image file attachments. We could use a snippet like the following to achieve this:
+    source: |
+      type.inbound
+      and any(attachments,
+        .file_type in~ ('png', 'jpeg', 'jpg', 'bmp', 'gif') 
+      )
+  
+  - markdown: |
+      We don't want to include emails that have legitimate links to DocuSign. So we might filter our results like this:
+    source: |
+      type.inbound
+      and any(body.links, 
+        not strings.ilike(.href_url.domain.root_domain, "docusign.*")
+      )
+  
+  - markdown: |
+      We need to inspect the contents of the image to conclude it has DocuSign branding and our social engineering lure. We could use MQL like this to achieve that:
+    source: |
+      type.inbound
+      and any(attachments,
+        (
+          any(ml.logo_detect(.).brands, 
+            .name == "DocuSign" and 
+            .confidence in ("medium", "high")
+          )
+          or any(file.explode(.),
+            any(ml.nlu_classifier(.scan.ocr.raw).intents, 
+              .name == "cred_theft" and 
+              .confidence != "low"
+            )
+          )
+        )
+        and any(file.explode(.),
+          any(.scan.strings.strings, 
+            regex.icontains(.,
+              "review document", 
+              "[^d][^o][^c][^u]sign", 
+              "important edocs", 
+              "completed document"
+            )
+          )
+        )
+      )

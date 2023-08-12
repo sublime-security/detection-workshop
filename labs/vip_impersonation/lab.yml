@@ -1,0 +1,43 @@
+name: 1. VIP Impersonation
+description: Hunt for the VIP Impersonation
+details: |
+  ## Brief
+
+  The Chief Executives of Tyrell Corp are being impersonated!
+
+  Emails are being sent to the finance department, requesting an invoice is paid ASAP.
+
+  The emails originate from free email providers, .e.g Gmail, Hotmail.
+
+  ---
+
+  ## Focus Areas
+  - Sender analysis
+  - Header analysis
+  - NLU (Natural Language Understanding)
+  - Free email provider
+
+hints:
+  - markdown: |
+      We can filter for known organisation VIP display names from freemail senders like this:
+    source: |
+      type.inbound
+      and any($org_vips, .display_name == sender.display_name)
+      and sender.email.domain.domain in $free_email_providers 
+  
+  - markdown: |
+      We can filter for emails with finance users using a list lookup like this:
+    source: |
+      type.inbound 
+      and any(recipients.to,
+          any($finance_users, .email == ..email.email)
+      )
+  
+  - markdown: |
+      We can leverage Natural Language Understanding (NLU) ML, to hunt for business email compromise (BEC) intents like this:
+    source: |
+      type.inbound
+      and any(ml.nlu_classifier(coalesce(body.html.display_text, body.plain.raw)).intents,
+        .name in ("bec") 
+        and .confidence == "high"
+      )

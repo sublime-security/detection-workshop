@@ -1,0 +1,56 @@
+name: 3. IcedID Brand Impersonation
+description: Hunt for IcedId's Brand Impersonation
+details: |
+  ## Brief
+
+  A PDF attachment is being leveraged with an embedded link.
+
+  The PDF makes use of Adobe branding to encourage the target user to download an encrypted zip.
+
+  ---
+
+  ## Focus Areas
+  - Attachment Content
+  - Brand Impersonation
+  - NLU (Natural Language Understanding)
+  - PDF analysis
+  - Computer Vision
+  - OCR (Optical Character Recognition)
+
+hints:
+  - markdown: |
+      For this lab, we want to focus on emails with PDF attachments. We could use a snippet like the following to achieve this:
+    source: |
+      type.inbound
+      and any(attachments,
+        .file_type == "pdf"
+      )
+  
+  - markdown: |
+      We want to focus on PDFs with Adobe branding, so we could use something like this to achieve that:
+    source: |
+      type.inbound
+      and any(attachments,
+          .file_type == "pdf" and
+          any(ml.logo_detect(.).brands, 
+              .name == "Adobe"
+          )
+      )
+  
+  - markdown: |
+      We want to filter out any legitimate emails from the impersonated brand, which we could do with something like this:
+    source: |
+      type.inbound
+      and not strings.ilike(sender.email.domain.root_domain, "adobe.*")
+
+
+  - markdown: |
+      We could use `file.explode` and OCR to look for a known phishing lure in the PDF with something like this:
+    source: |
+      type.inbound and 
+      any(attachments,
+        .file_extension == "pdf" and 
+        any(file.explode(.),
+          strings.ilike(.scan.ocr.raw, "*shared web archived document*") 
+        ) 
+      )

@@ -1,0 +1,73 @@
+name: 8. Microsoft QR Code Phishing
+description: Hunt for fake Microsoft QR codes
+details: |
+  ## Brief
+
+  Threat actors are sending fake 'Microsoft' emails.
+
+  These emails contain a single image that includes a QR code. The user is encouraged to scan these QR codes to refresh their Multi-Factor Authentication (MFA) to prevent losing access to their account.
+
+  These links typically send the user to a credential theft site, for example a fake login portal, not to any Microsoft related service.
+  
+  ---
+
+  ## Focus Areas
+  - Sender Analysis
+  - Attachment analysis
+  - Link analysis
+  - QR code analysis
+  - Computer Vision
+
+hints:
+  - markdown: |
+      For this lab, we want to focus on emails with QR codes. We could use this MQL to hunt for image attachments containing these:
+    source: |
+      type.inbound
+      and any(attachments,
+        .file_type in~ ('bmp', 'png', 'jpg', 'jpeg')
+        and any(file.explode(.), 
+            .scan.qr.type == "url"
+        )   
+      )
+  
+  - markdown: |
+      We're concerned specifically with Microsoft brand impersonation. This could be in the image attachment, or the email body itself. Both of which we could look for with MQL like this:
+    source: |
+      type.inbound
+      and (
+        any(attachments, 
+          .file_type in~ ('bmp', 'png', 'jpg', 'jpeg')
+          and any(ml.logo_detect(.).brands, 
+              strings.starts_with(.name, "Microsoft")
+          )
+        )
+        or any(ml.logo_detect(beta.message_screenshot()).brands, 
+          strings.starts_with(.name, "Microsoft")
+        )
+      )
+  
+  - markdown: |
+      We could refine our search to look for specific social engineering text, or for URLs that contain the recipient's email (a common phishing technique):
+    source: |
+      type.inbound
+      and any(attachments,
+        .file_type in~ ('bmp', 'png', 'jpg', 'jpeg')
+        and (
+          any(file.explode(.),
+            any(.scan.strings.strings, 
+              regex.icontains(.,  'scan|camera')
+            )   
+            and any(.scan.strings.strings, 
+              regex.icontains(.,  '\bQR\b|Q\.R\.|barcode')
+            )
+          )
+          or (
+            any(file.explode(.), 
+              .scan.qr.type == "url"
+              and any(recipients.to, 
+                strings.icontains(..scan.qr.data, .email.email)
+              )
+            )
+          )   
+        )
+      )

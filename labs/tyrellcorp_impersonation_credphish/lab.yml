@@ -1,0 +1,19 @@
+name: 10. Credential Phishing
+description: Hunt for the message impersonating TyrellCorp with a link to steal credentials
+details: |
+  ## Brief
+
+  Threat actors are impersonating TyrellCorp to phish credentials.
+
+  These emails contain the TyrellCorp brand logo, engaging and urgent language, and suspicious links.
+
+  On click, the user is sent to an attacker-controlled site to steal Microsoft credentials.
+
+  ---
+
+  ## Focus Areas
+  - Impersonation
+  - Link analysis
+  - Logo detection
+  - Credential phishing
+  - Computer Vision

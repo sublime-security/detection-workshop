@@ -1,0 +1,73 @@
+name: 5. Scripts in OneNote Files
+description: Hunt for Qakbot malware hiding in Microsoft OneNote files
+details: |
+  ## Brief
+
+  In early 2023, several malware families, including Qakbot, focused heavily on script files embedded within Microsoft OneNote .one files. Due in part to the lack of Mark-of-the-Web applied to these embedded files (until this was patched by Microsoft!).
+
+  Office 365 lures, amongst others like Adobe, are used to encourage users to launch the scripts. These scripts would then typically download and launch remotely-hosted DLLs to complete infection.
+
+  ---
+
+  ## Focus Areas
+  - Attachment analysis
+  - OCR (Optical Character Recognition)
+  - YARA
+
+hints:
+  - markdown: |
+      We can filter for OneNote files with MQL like this:
+    source: |
+      type.inbound
+      and any(attachments,
+          .file_extension in~ ("one", "onepkg")
+      )
+  
+  - markdown: |
+      We can filter for OneNote files that match on any of our installed Yara signatures like this:
+    source: |
+      type.inbound
+      and any(attachments,
+          .file_extension in~ ("one", "onepkg")
+          and any(file.explode(.),
+              length(.scan.yara.matches) > 0
+          )
+      )
+  
+  - markdown: |
+      We can hunt for known-bad strings in OneNote files (in archives or otherwise!) using this MQL:
+    source: |
+      type.inbound 
+      and any(attachments, 
+          (
+              .file_extension in ("one", "onepkg") or 
+              .file_extension in $file_extensions_common_archives
+          )
+          and any(file.explode(.), 
+              any(.flavors.yara, . == "onenote_file")
+          ) 
+          and any(file.explode(.), 
+              (
+                  any(.scan.strings.strings, strings.ilike(., 
+                      "*RegWrite*",
+                      "*RegRead*",
+                      "*rundll32*",
+                      "*<job id=*", //wsf
+                      "*powershell.exe*",
+                      "*#@~^*", // Microsoft Script Encoding File Header, jse, vbe
+                      '*C:\Users\Public*',
+                      "*69 6e 76 6f 6b 65 2d 77 65 62 72 65 71 75 65 73 74*", // invoke-webrequest
+                      "*system.net.webclient*",
+                      "*WScript.Shell*",
+                      '*HKCU\SOFTWARE*',
+                      "*https://www.instructables.com/How-to-Make-a-message-box-using-VBScript/*",
+                      "*This document is corrupted and could not be opened*"
+                  )) or 
+                  strings.ilike(.scan.ocr.raw, 
+                      "*This document contains attachments from the cloud*", // Adobe/365 branding
+                      "*Double-Click The \"Open Protected View\" button to securely view document contents*", //O365 branding
+                      "*Microsoft 365* is the new name for Microsoft's Office 365 subscription service*" //O365 branding
+                  )
+              )
+          )
+      )
