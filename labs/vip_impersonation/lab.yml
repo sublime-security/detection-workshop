@@ -37,7 +37,6 @@ hints:
       We can leverage Natural Language Understanding (NLU) ML, to hunt for business email compromise (BEC) intents like this:
     source: |
       type.inbound
-      and any(ml.nlu_classifier(coalesce(body.html.display_text, body.plain.raw)).intents,
-        .name in ("bec") 
-        and .confidence == "high"
+      and any(ml.nlu_classifier(body.current_thread.text).intents,
+              .name in ("bec") and .confidence == "high"
       )

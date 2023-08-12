@@ -1,2 +1,2 @@
 name: 'Starter 3'
-description: Find the inbound message with a PDF attachment
+description: Find the inbound message with a PDF attachment with a file name containing 'invoice'
