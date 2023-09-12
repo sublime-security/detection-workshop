@@ -1,2 +1,2 @@
 name: 'Starter 2'
-description: 'Find the inbound message with the attachment name: replicants.txt'
+description: 'Find the inbound message with the attachment name: "replicants.txt"'
