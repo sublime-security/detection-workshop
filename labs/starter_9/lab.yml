@@ -1,2 +1,2 @@
 name: 'Starter 9'
-description: Find the inbound message with a suspicious subject using the following regular expression: "suspicious.*sign.*[io]n"
+description: 'Find the inbound message with a suspicious subject using the following regular expression: "suspicious.*sign.*[io]n"'
