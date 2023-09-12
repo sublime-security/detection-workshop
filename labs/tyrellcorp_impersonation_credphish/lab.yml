@@ -1,4 +1,4 @@
-name: 10. Credential Phishing
+name: 11. Credential Phishing
 description: Hunt for the message impersonating TyrellCorp with a link to steal credentials
 details: |
   ## Brief
