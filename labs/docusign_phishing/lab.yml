@@ -23,7 +23,7 @@ hints:
     source: |
       type.inbound
       and any(attachments,
-        .file_type in~ ('png', 'jpeg', 'jpg', 'bmp', 'gif') 
+        .file_type in~ $file_types_images
       )
   
   - markdown: |
