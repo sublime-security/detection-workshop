@@ -99,7 +99,9 @@ hints:
       We could leverage NLU to detect callback scam content in either the attachment or the body of the email like this:
     source: |
       type.inbound
-      
+
+      and sender.email.domain.root_domain not in $org_domains
+
       and (
           any(attachments,
               (.file_type in $file_types_images or .file_type == "pdf")
