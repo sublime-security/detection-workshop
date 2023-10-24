@@ -71,3 +71,16 @@ hints:
           )   
         )
       )
+  
+  - markdown: |
+      We could go one step further and see where the QR code link takes us. For example, is it a login page?:
+    source: |
+      type.inbound
+      and any(attachments,
+        .file_type in~ $file_types_images
+        and any(file.explode(.),
+          .scan.qr.type == "url" and
+          .scan.qr.url.domain.domain in $free_file_hosts and 
+          beta.linkanalysis(.scan.qr.url).credphish.contains_login
+        )
+      )
