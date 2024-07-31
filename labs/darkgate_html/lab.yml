@@ -1,0 +1,52 @@
+name: 3. DarkGate HTML Smuggling
+description: Hunt for DarkGate HTML Smuggling
+details: |
+  ## Brief
+
+  A DarkGate malware delivery mechanism.
+
+  An HTML attachment with Microsoft Word branding.
+  
+  On click, the HTML uses a 'search-ms' protocol handler to present a URL file on a remote server via SMB. 
+  
+  When executed, this execute a remotely-hosted VBS script that spawns a PowerShell process which creates a new directory, downloads the AutoHotKey executable, a hex-encoded shellcode and an AutoHotKey script that loads the shellcode and executes it to achieve infection.
+
+  ---
+
+  ## Focus Areas
+  - Attachment analysis
+  - HTML smuggling
+
+hints:
+  - markdown: |
+      For this lab, we're concerned with HTML-based email attachments, which we could hunt for like this, either using a known file extension or the analysed file type:
+    source: |
+      type.inbound and 
+      any(attachments, 
+        regex.icontains(.file_extension, '^[sdx]{0,1}ht[ml]{0,2}') or 
+        .file_type == 'html'
+      )
+  
+  - markdown: |
+      We could look in the file for specific string snippets (like base64-encoded 'search-ms' protocol handlers) using MQL like this:
+    source: |
+      type.inbound
+
+      and any(attachments,
+          regex.imatch(.file_extension, '^[sdx]{0,1}ht[ml]{0,2}$') and
+          any(file.explode(.),
+              any(.scan.strings.strings, 
+                  strings.ilike(.,
+                      "*c2VhcmNoLW1zOnF1ZXJ5*", //search-ms:query B64
+                      "*5JXZ1FnOz1WLoNmchV2c*", //search-ms:query B64 rev
+                      "*c2VhcmNoLW1zOi8vcXVlcnk*", //search-ms://query B64
+                      "*knclVXcv8iOz1WLoNmchV2c*", //search-ms://query B64 rev
+                      "*c2VhcmNoOnF1ZXJ5*", //search:query B64
+                      "*5JXZ1FnOoNmchV2c*", //search:query B64 rev
+                      "*search-ms:query*location:\\\\*",
+                      "*search:query*location:\\\\*"
+                  )
+              )
+          )
+      )
+

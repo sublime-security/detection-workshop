@@ -1,16 +1,16 @@
 Received: from PH7PR02MB8929.namprd02.prod.outlook.com (::1) by
- BL3PR02MB8034.namprd02.prod.outlook.com with HTTPS; Wed, 20 Jul 2022 15:07:55
+ BL3PR02MB8034.namprd02.prod.outlook.com with HTTPS; Wed, 20 Jul 2024 15:07:55
  +0000
 Received: from SN7PR04CA0178.namprd04.prod.outlook.com (2603:10b6:806:125::33)
  by PH7PR02MB8929.namprd02.prod.outlook.com (2603:10b6:510:1fb::7) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5417.26; Wed, 20 Jul
- 2022 15:03:41 +0000
+ 2024 15:03:41 +0000
 Received: from SN1NAM02FT0028.eop-nam02.prod.protection.outlook.com
  (2603:10b6:806:125:cafe::f) by SN7PR04CA0178.outlook.office365.com
  (2603:10b6:806:125::33) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5417.20 via Frontend
- Transport; Wed, 20 Jul 2022 15:03:41 +0000
+ Transport; Wed, 20 Jul 2024 15:03:41 +0000
 Authentication-Results: spf=softfail (sender IP is 210.189.85.18)
  smtp.mailfrom=notarealdomain.com.com; dkim=none (message not signed)
  header.d=none;dmarc=fail action=none header.from=notarealdomain.com.com;compauth=pass
@@ -20,21 +20,21 @@ Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
 Received: from pmg05.wadax.ne.jp (210.189.85.18) by
  SN1NAM02FT0028.mail.protection.outlook.com (10.97.4.206) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.5438.12 via Frontend Transport; Wed, 20 Jul 2022 15:03:41 +0000
+ 15.20.5438.12 via Frontend Transport; Wed, 20 Jul 2024 15:03:41 +0000
 Received: from pmg05.wadax.ne.jp (localhost.localdomain [127.0.0.1])
 	by pmg05.wadax.ne.jp (Proxmox) with ESMTP id 10B7E4B54BA7
-	for <leon.kowalski@notarealdomain.com.com>; Thu, 14 Jul 2022 00:03:40 +0900 (JST)
-Received: from wx22.wadax.ne.jp (wx22.wadax.ne.jp [203.137.110.66])
+	for <leon.kowalski@notarealdomain.com.com>; Thu, 14 Jul 2024 00:03:40 +0900 (JST)
+Received: from wx24.wadax.ne.jp (wx24.wadax.ne.jp [203.137.110.66])
 	by pmg05.wadax.ne.jp (Proxmox) with ESMTPS id 88EF64B56A3B
-	for <leon.kowalski@notarealdomain.com.com>; Thu, 21 Jul 2022 00:04:41 +0900 (JST)
+	for <leon.kowalski@notarealdomain.com.com>; Thu, 21 Jul 2024 00:04:41 +0900 (JST)
 Received: from [127.0.0.1] (ec2-3-112-17-194.ap-northeast-1.compute.amazonaws.com [3.112.17.194])
-	by wx22.wadax.ne.jp (Postfix) with ESMTPSA id 7B606C0064
-	for <leon.kowalski@notarealdomain.com.com>; Thu, 21 Jul 2022 00:04:41 +0900 (JST)
+	by wx24.wadax.ne.jp (Postfix) with ESMTPSA id 7B606C0064
+	for <leon.kowalski@notarealdomain.com.com>; Thu, 21 Jul 2024 00:04:41 +0900 (JST)
 From: "Leon Kowalski" <leon.kowalski@notarealdomain.com>
 To: "Eldon Tyrell" <eldon.tyrell@tyrellcorp.com>
 Subject: TPS reports
-Date: Fri, 21 Jul 2022 11:31:00 -0400
-Message-ID: <70615806-0e59-4f22-aa8b-87d8f9f543ca@gmail.com>
+Date: Fri, 21 Jul 2024 11:31:00 -0400
+Message-ID: <70615806-0e59-4f24-aa8b-87d8f9f543ca@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 Content-Type: text/html; charset=us-ascii

@@ -1,33 +1,33 @@
 Received: from SJ0PR11MB5151.namprd11.prod.outlook.com (2603:10b6:a03:2ac::20)
- by CO6PR11MB5586.namprd11.prod.outlook.com with HTTPS; Fri, 9 Jun 2023
+ by CO6PR11MB5586.namprd11.prod.outlook.com with HTTPS; Fri, 9 Jun 2024
  15:32:33 +0000
 Received: from YT4PR01CA0454.CANPRD01.PROD.OUTLOOK.COM (2603:10b6:b01:10d::19)
  by SJ0PR11MB5151.namprd11.prod.outlook.com (2603:10b6:a03:2ac::20) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6455.38; Fri, 9 Jun
- 2023 15:32:27 +0000
+ 2024 15:32:27 +0000
 Received: from YT3CAN01FT014.eop-CAN01.prod.protection.outlook.com
  (2603:10b6:b01:10d:cafe::d9) by YT4PR01CA0454.outlook.office365.com
  (2603:10b6:b01:10d::19) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6477.29 via Frontend
- Transport; Fri, 9 Jun 2023 15:32:24 +0000
+ Transport; Fri, 9 Jun 2024 15:32:24 +0000
 Received: from m103.secure.ne.jp (117.20.109.230) by
  YT3CAN01FT014.mail.protection.outlook.com (10.118.140.148) with Microsoft
- SMTP Server id 15.20.6477.29 via Frontend Transport; Fri, 9 Jun 2023 15:32:24
+ SMTP Server id 15.20.6477.29 via Frontend Transport; Fri, 9 Jun 2024 15:32:24
  +0000
-Received: (qmail 31518 invoked by uid 0); 10 Jun 2023 00:32:23 +0900
+Received: (qmail 31518 invoked by uid 0); 10 Jun 2024 00:32:24 +0900
 Received: from unknown (HELO Japan) (kitani?minoru@caetla.co.jp@20.210.219.201)
-  by 0 with SMTP; 10 Jun 2023 00:32:23 +0900
+  by 0 with SMTP; 10 Jun 2024 00:32:24 +0900
 From: "Documents Portal" <sign@doucsign.co.jp>
 To: "Pamela Ross" <pamela.ross@tyrellcorp.com>
 Subject: Complete via Sign: #2 -tyrellcorp.com - Friday, June 9,
- 2023
+ 2024
 Thread-Topic: Complete via Sign: #2 -tyrellcorp.com - Friday, June
- 9, 2023
+ 9, 2024
 Thread-Index: AQHZmuecgnFbG2JOj0aD7CP+frFQxA==
 X-MS-Exchange-MessageSentRepresentingType: 1
-Date: Fri, 9 Jun 2023 15:32:23 +0000
-Message-ID: <20230906153223F9CBC482AA-BEB6D9937D@doucsign.co.jp>
+Date: Fri, 9 Jun 2024 15:32:24 +0000
+Message-ID: <20240906153224F9CBC482AA-BEB6D9937D@doucsign.co.jp>
 Content-Language: en-US
 X-MS-Exchange-Organization-AuthAs: Anonymous
 X-MS-Exchange-Organization-AuthSource:
@@ -54,16 +54,16 @@ x-ms-office365-filtering-correlation-id: d197c604-7c7b-457b-e8f3-08db68feb99e
 x-ms-traffictypediagnostic:
 	YT3CAN01FT014:EE_|SJ0PR11MB5151:EE_|CO6PR11MB5586:EE_
 x-microsoft-antispam: BCL:0;
-x-ms-exchange-crosstenant-originalarrivaltime: 09 Jun 2023 15:32:24.3551 (UTC)
+x-ms-exchange-crosstenant-originalarrivaltime: 09 Jun 2024 15:32:24.3551 (UTC)
 x-ms-exchange-crosstenant-fromentityheader: Internet
-x-ms-exchange-crosstenant-id: d7347bcb-a4ff-4daf-8f50-34923221ed69
+x-ms-exchange-crosstenant-id: d7347bcb-a4ff-4daf-8f50-34924221ed69
 x-ms-exchange-crosstenant-network-message-id:
 	d197c604-7c7b-457b-e8f3-08db68feb99e
 x-ms-exchange-transport-crosstenantheadersstamped: SJ0PR11MB5151
 x-eopattributedmessage: 0
 x-ms-exchange-transport-endtoendlatency: 00:00:09.5435214
 x-ms-exchange-atpmessageproperties: SA|SL
-x-eoptenantattributedmessage: d7347bcb-a4ff-4daf-8f50-34923221ed69:0
+x-eoptenantattributedmessage: d7347bcb-a4ff-4daf-8f50-34924221ed69:0
 x-ms-exchange-processed-by-bccfoldering: 15.20.6455.026
 x-ms-exchange-crosstenant-authas: Anonymous
 x-ms-exchange-crosstenant-authsource:
@@ -125,14 +125,14 @@ DISCLAIMER-Securities offered through NexPoint Securities, Inc., ("NexPoint Secu
 
 --3a1df7534d5dd0227b66b84060ba3dc4c0249e467854cab5533cad192d35
 Content-Type: text/html; charset="us-ascii"
-Content-ID: <E44F261B3665F340876452232A9DB238@namprd11.prod.outlook.com>
+Content-ID: <E44F261B3665F340876452242A9DB248@namprd11.prod.outlook.com>
 
 <html xmlns="http://www.w3.org/TR/REC-html40" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml">
 <head>
 <!--[if !mso]> <STYLE>v\:* {behavior:url(#default#VML);} o\:* {behavior:url(#default#VML);} w\:* {behavior:url(#default#VML);} .shape {behavior:url(#default#VML);} </STYLE> <![endif]-->
 <meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
 <style><!-- /* Font Definitions */ @font-face {font-family:"Cambria Math"; panose-1:2 4 5 3 5 4 6 3 2 4;} @font-face {font-family:Calibri; panose-1:2 15 5 2 2 2 4 3 2 4;} @font-face {font-family:"Segoe UI"; panose-1:2 11 5 2 4 2 4 2 2 3;} /* Style Definitions */ p.MsoNormal, li.MsoNormal, div.MsoNormal {margin:0in; font-size:12.0pt; font-family:"Times New Roman",serif;} span.EmailStyle24 {mso-style-type:personal-compose; font-family:"Calibri",sans-serif; color:windowtext;} .MsoChpDefault {mso-style-type:export-only; font-size:10.0pt; mso-ligatures:none;} @page WordSection1 {size:8.5in 11.0in; margin:1.0in 1.0in 1.0in 1.0in;} div.WordSection1 {page:WordSection1;} --></style><!--[if gte mso 9]><xml> <o:shapedefaults v:ext="edit" spidmax="1026" /> </xml><![endif]--><!--[if gte mso 9]><xml> <o:shapelayout v:ext="edit"> <o:idmap v:ext="edit" data="1" /> </o:shapelayout></xml><![endif]-->
-<title>Completed: Complete viaSign: #2 -tyrellcorp.com - Friday, June 9, 2023</title>
+<title>Completed: Complete viaSign: #2 -tyrellcorp.com - Friday, June 9, 2024</title>
 </head>
 <body lang="EN-US" style="WORD-WRAP: break-word" vlink="#954f72" link="#0563c1">
 <div>
@@ -164,8 +164,8 @@ Content-ID: <E44F261B3665F340876452232A9DB238@namprd11.prod.outlook.com>
 Content-Type: image/jpeg; name="oncolos.jpg"
 Content-Description: oncolos.jpg
 Content-Disposition: inline; filename="oncolos.jpg"; size=36416;
-	creation-date="Fri, 09 Jun 2023 15:32:34 GMT";
-	modification-date="Fri, 09 Jun 2023 15:33:47 GMT"
+	creation-date="Fri, 09 Jun 2024 15:32:34 GMT";
+	modification-date="Fri, 09 Jun 2024 15:33:47 GMT"
 Content-ID: <51C9CADD9F1587015C07@Japan>
 Content-Transfer-Encoding: base64
 
