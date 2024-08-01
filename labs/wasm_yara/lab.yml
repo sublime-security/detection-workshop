@@ -1,0 +1,39 @@
+name: 4. WASM Smuggling with YARA
+description: Hunt for WASM smuggling attachments using YARA
+details: |
+  ## Brief
+
+  Threat actors have added a new HTML smuggling technique to their arsenal - WebAssembly (WASM) Smuggling. This leverages the WASM technology to obfuscate and deliver malicious payloads, links and other web content.
+
+  In this example, we have an executable - a file format typically blocked by default by mail gateways - embedded within an HTML file leveraging WASM Smuggling.
+
+  ---
+
+  ## Focus Areas
+  - Attachment analysis
+  - YARA
+
+hints:
+  - markdown: |
+      We can filter for HTML files with MQL like this:
+    source: |
+      type.inbound and 
+      any(attachments, 
+        regex.icontains(.file_extension, '^[sdx]{0,1}ht[ml]{0,2}') or 
+        .file_type == 'html'
+      )
+  
+  - markdown: |
+      We can filter for HTML files that match on any of our installed Yara signatures like this:
+    source: |
+      type.inbound
+      and any(attachments,
+        (
+          regex.imatch(.file_extension, '^[sdx]{0,1}ht[ml]{0,2}$')
+          or .file_extension in~ $file_extensions_common_archives
+          or .file_type == "html"
+        )
+        and any(file.explode(.),
+          length(.scan.yara.matches) > 0
+        )
+      )
