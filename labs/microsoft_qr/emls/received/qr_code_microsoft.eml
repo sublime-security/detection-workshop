@@ -1,16 +1,16 @@
 Received: from LO3P123MB3260.GBRP123.PROD.OUTLOOK.COM (2603:10a6:600:b6::11)
- by LNXP123MB2444.GBRP123.PROD.OUTLOOK.COM with HTTPS; Sat, 8 Jul 2023
+ by LNXP123MB2444.GBRP123.PROD.OUTLOOK.COM with HTTPS; Sat, 8 Jul 2024
  19:06:54 +0000
 Received: from LNXP265CA0093.GBRP265.PROD.OUTLOOK.COM (2603:10a6:600:76::33)
  by LO3P123MB3260.GBRP123.PROD.OUTLOOK.COM (2603:10a6:600:b6::11) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6588.14; Sat, 8 Jul
- 2023 19:06:53 +0000
+ 2024 19:06:53 +0000
 Received: from LO2GBR01FT017.eop-gbr01.prod.protection.outlook.com
  (2603:10a6:600:76:cafe::df) by LNXP265CA0093.outlook.office365.com
  (2603:10a6:600:76::33) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6565.29 via Frontend
- Transport; Sat, 8 Jul 2023 19:06:53 +0000
+ Transport; Sat, 8 Jul 2024 19:06:53 +0000
 Authentication-Results: spf=pass (sender IP is 20.88.157.187)
  smtp.mailfrom=microsoft.com; dkim=pass (signature was verified)
  header.d=microsoft.com;dmarc=pass action=none
@@ -22,7 +22,7 @@ Received-SPF: Pass (protection.outlook.com: domain of microsoft.com designates
 Received: from mail-nam-cu06-bl.eastus.cloudapp.azure.com (20.88.157.187) by
  LO2GBR01FT017.mail.protection.outlook.com (10.152.42.103) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6588.14 via Frontend Transport; Sat, 8 Jul 2023 19:06:52 +0000
+ 15.20.6588.14 via Frontend Transport; Sat, 8 Jul 2024 19:06:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; d=microsoft.com; s=s1024-meo;
 	c=relaxed/relaxed; i=microsoft-noreply@microsoft.com; t=1688843212;
 	h=from:subject:date:message-id:to:mime-version:content-type;
@@ -33,7 +33,7 @@ DKIM-Signature: v=1; a=rsa-sha256; d=microsoft.com; s=s1024-meo;
 From: "Microsoft" <microsoft-noreply@microsoft.com>
 To: "Rachael Tyrell" <kenny.suarez@tyrellcorp.com>
 Subject: Mobile sign-in
-Date: Fri, 28 Jul 2023 16:29:20 +0000
+Date: Fri, 28 Jul 2024 16:29:20 +0000
 Message-ID: <fd0907c6-2fad-42ec-b23d-b8c04e696807@microsoft.com>
 Content-Language: en-US
 Content-Type: multipart/related;
@@ -77,8 +77,8 @@ Content-ID: <E44F261B3665F340876452232A9DB238@namprd11.prod.outlook.com>
 Content-Type: image/jpeg; name="refresh.png"
 Content-Description: refresh.png
 Content-Disposition: inline; filename="refresh.png"; size=69268;
-	creation-date="Wed, 26 Jul 2023 15:32:34 GMT";
-	modification-date="Wed, 26 Jul 2023 15:33:47 GMT"
+	creation-date="Wed, 26 Jul 2024 15:32:34 GMT";
+	modification-date="Wed, 26 Jul 2024 15:33:47 GMT"
 Content-ID: <9C3DCADD9F1587015C07@MSFT>
 Content-Transfer-Encoding: base64
 

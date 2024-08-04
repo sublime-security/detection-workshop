@@ -1,15 +1,15 @@
 Received: from PH8PR11MB6756.namprd11.prod.outlook.com (::1) by
- DM6PR11MB4233.namprd11.prod.outlook.com with HTTPS; Tue, 1 Aug 2023 07:43:52
+ DM6PR11MB4233.namprd11.prod.outlook.com with HTTPS; Tue, 1 Aug 2024 07:43:52
  +0000
 Received: from MN2PR01CA0041.prod.exchangelabs.com (2603:10b6:208:23f::10) by
  PH8PR11MB6756.namprd11.prod.outlook.com (2603:10b6:510:1cb::8) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6631.44; Tue, 1 Aug 2023 07:43:47 +0000
+ 15.20.6631.44; Tue, 1 Aug 2024 07:43:47 +0000
 Received: from YQBCAN01FT017.eop-CAN01.prod.protection.outlook.com
  (2603:10b6:208:23f:cafe::2e) by MN2PR01CA0041.outlook.office365.com
  (2603:10b6:208:23f::10) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6631.44 via Frontend
- Transport; Tue, 1 Aug 2023 07:43:47 +0000
+ Transport; Tue, 1 Aug 2024 07:43:47 +0000
 Authentication-Results: spf=pass (sender IP is 180.37.195.22)
  smtp.mailfrom=sweet.ocn.ne.jp; dkim=none (message not signed)
  header.d=none;dmarc=bestguesspass action=none
@@ -21,23 +21,23 @@ Received-SPF: Pass (protection.outlook.com: domain of sweet.ocn.ne.jp
 Received: from ocn-ckd-mts-103c21.ocn.ad.jp (180.37.195.22) by
  YQBCAN01FT017.mail.protection.outlook.com (10.118.138.156) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6631.44 via Frontend Transport; Tue, 1 Aug 2023 07:43:44 +0000
+ 15.20.6631.44 via Frontend Transport; Tue, 1 Aug 2024 07:43:44 +0000
 Received: from mf-smf-ucb026c1.ocn.ad.jp (mf-smf-ucb026c1.ocn.ad.jp [153.153.66.166])
 	by ocn-ckd-mts-103c21.ocn.ad.jp (Postfix) with ESMTP id 3057A3800421B
-	for <bobby.robbins@tyrellcorp.com>; Tue,  1 Aug 2023 16:43:43 +0900 (JST)
+	for <bobby.robbins@tyrellcorp.com>; Tue,  1 Aug 2024 16:43:43 +0900 (JST)
 Received: from ocn-vc-mts-102c1.ocn.ad.jp ([153.153.66.81])
 	by mf-smf-ucb026c1.ocn.ad.jp with ESMTP
-	id Qk2hq6F1nf17mQk2hqgUf5; Tue, 01 Aug 2023 16:43:43 +0900
+	id Qk2hq6F1nf17mQk2hqgUf5; Tue, 01 Aug 2024 16:43:43 +0900
 Received: from ocn-sdpx-mts-106c1.ocn.ad.jp ([211.16.10.147])
 	by ocn-vc-mts-102c1.ocn.ad.jp with ESMTP
-	id Qk2hqTwEldNjmQk2hqk8Yf; Tue, 01 Aug 2023 16:43:43 +0900
+	id Qk2hqTwEldNjmQk2hqk8Yf; Tue, 01 Aug 2024 16:43:43 +0900
 Received: from mail.failureaffinity.com (ec2-13-230-250-125.ap-northeast-1.compute.amazonaws.com [13.230.250.125])
 	by ocn-sdpx-mts-106c1.ocn.ad.jp (Postfix) with ESMTPA
-	for <bobby.robbins@tyrellcorp.com>; Tue,  1 Aug 2023 16:43:43 +0900 (JST)
+	for <bobby.robbins@tyrellcorp.com>; Tue,  1 Aug 2024 16:43:43 +0900 (JST)
 To: "Bobby Robbins" <bobby.robbins@tyrellcorp.com>
 Subject: IT Security Attestation Contract
 From: "IT Administrators <bobby.robbins@tyrellcorp.com>" <rcig6drb@sweet.ocn.ne.jp>
-Date: Tue, 01 Aug 2023 16:43:43 +0900 (JST)
+Date: Tue, 01 Aug 2024 16:43:43 +0900 (JST)
 Message-Id: <tbjgizmr.3539-ykeom.oo1pk@60.lhdrq.co.jp>
 X-Mailer: OCNMailWebService/5263.8.111_70
 Return-Path: rcig6drb@sweet.ocn.ne.jp
