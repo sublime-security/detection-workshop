@@ -81,6 +81,6 @@ hints:
         and any(file.explode(.),
           .scan.qr.type == "url" and
           .scan.qr.url.domain.domain in $free_file_hosts and 
-          beta.linkanalysis(.scan.qr.url).credphish.contains_login
+          ml.link_analysis(.scan.qr.url).credphish.contains_login
         )
       )
