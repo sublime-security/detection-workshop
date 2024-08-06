@@ -1,2 +1,18 @@
-name: 'Starter 11'
+name: 'Starter 11: Group lists'
 description: Find the *internal* message to the "$it_users" group
+hints:
+  - markdown: |
+      Sublime automatically syncs Google Groups and Microsoft distribution lists, which can then be used to define
+      rules based on group membership:
+    source: |
+      any($org_vips, .email == sender.display_name)
+  - markdown: |
+      Each entry in the group list includes the member's display name and email address:
+    source: |
+      any($org_vips, .email == sender.email.email)
+  - markdown: |
+      In a looping function, you can access a loop item from a parent scope with an additional `.`, such as `..`
+      
+      And remember: you can loop over an array inside a loop over an array:
+    source: |
+      any(recipients.to, any($org_vips, .email == ..email.email))

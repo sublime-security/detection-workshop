@@ -1,2 +1,10 @@
-name: 'Starter 12'
+name: 'Starter 12: Sublime lists'
 description: Find the inbound message with a link to a free file hosting service
+hints:
+  - markdown: |
+      [Sublime lists](https://docs.sublime.security/docs/lists#sublime-lists) are maintained by the Sublime team and
+      are [open-source on GitHub](https://github.com/sublime-security/static-files). They include lists with the Alexa
+      top 1 million domains, disposable email providers, free file hosting services (`$free_file_hosts`), and more:
+
+    source: |
+      any(body.links, .href_url.domain.domain not in $alexa_1m)

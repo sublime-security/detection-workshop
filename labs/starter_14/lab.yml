@@ -1,2 +1,16 @@
-name: 'Starter 14'
+name: 'Starter 14: Levenshtein edit distance & operators'
 description: Find the inbound message where the display name is similar to "Ryan Gosling"
+hints:
+  - markdown: |
+      `strings.levenshtein` and `strings.ilevenshtein` are used to calculate the [Levenshtein edit distance](https://en.wikipedia.org/wiki/Levenshtein_distance)
+      between two strings. The returned value is equal to the minimum number of character operations (deletion, insertion,
+      substitution) required to transform one string into the other.
+      
+      For example, this returns `2`, since `strings.levenshtein` is case-sensitive:
+    source: |
+      strings.levenshtein('Bat', 'bot')
+
+  - markdown: |
+      One powerful application of Levenshtein distance is to detect impersonation:
+    source: |
+      strings.ilevenshtein(sender.display_name, "Elvis Presley") < 3

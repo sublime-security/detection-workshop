@@ -1,2 +1,13 @@
-name: 'Starter 3'
+name: 'Starter 3: String functions'
 description: Find the inbound message with a PDF attachment with a file name containing "invoice"
+hints:
+  - markdown: |
+      MQL supports a variety of [string functions](https://docs.sublime.security/docs/strings-module) to manipulate and
+      compare strings:
+    source: |
+      strings.contains(.file_name, 'overdue')
+
+  - markdown: |
+      Most string functions have a case-insensitive variant:
+    source: |
+      strings.icontains(.file_name, 'OVERDUE')

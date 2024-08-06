@@ -1,2 +1,15 @@
-name: 'Starter 6'
+name: 'Starter 6: Message body'
 description: Find the inbound message with the words "RePliCants aRE HuMAN" in the body
+hints:
+  - markdown: |
+      The MDM includes both the [plaintext and HTML body](https://docs.sublime.security/docs/how-to-detect-keywords-or-phrases-in-the-body) of a message:
+    source: |
+      any([body.plain.raw, body.html.raw],
+        strings.ilike(., "*voicemail*", "*password reset*")
+      )
+  - markdown: |
+      In addition to the raw contents, you can also inspect derived data like `body.html.inner_text` and `body.html.display_text`:
+    source: |
+      any([body.plain.raw, body.html.inner_text],
+        regex.contains(., '\b(\d\d\d)-(\d\d)-(\d\d\d\d)\b')
+      )
