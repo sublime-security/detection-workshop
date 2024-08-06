@@ -5,9 +5,9 @@ hints:
       MQL supports a variety of [string functions](https://docs.sublime.security/docs/strings-module) to manipulate and
       compare strings:
     source: |
-      strings.contains(.file_name, 'overdue')
+      strings.contains(subject.subject, 'overdue')
 
   - markdown: |
       Most string functions have a case-insensitive variant:
     source: |
-      strings.icontains(.file_name, 'OVERDUE')
+      any(attachments, strings.icontains(.file_name, 'OVERDUE'))
