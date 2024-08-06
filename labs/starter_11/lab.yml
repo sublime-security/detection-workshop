@@ -13,6 +13,6 @@ hints:
   - markdown: |
       In a looping function, you can access a loop item from a parent scope with an additional `.`, such as `..`
       
-      And remember: you can loop over an array inside a loop over an array:
+      And remember, you can loop over an array inside a loop over an array:
     source: |
       any(recipients.to, any($org_vips, .email == ..email.email))

@@ -2,7 +2,7 @@ name: 'Starter 15: Email tenant lists'
 description: Find the inbound message where the sender's domain is similar to a known organization domain
 hints:
   - markdown: |
-      [Email tenant lists](https://docs.sublime.security/docs/lists#email-tenant-lists) contain information from your
+      [Email tenant lists](https://docs.sublime.security/docs/lists#email-tenant-lists) contain context about your
       upstream email provider(s) (Google Workspace or Microsoft 365), synced daily:
       
       - `$org_domains`: All domains associated with your organization’s message sources

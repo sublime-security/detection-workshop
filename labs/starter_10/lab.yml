@@ -3,7 +3,7 @@ description: 'Find the inbound message to: "nexus8@tyrellcorp.com"'
 hints:
   - markdown: |
       Sublime categorizes the [directionality](https://docs.sublime.security/docs/message-types) of email messages using
-      the `type` property of the [MDM](https://docs.sublimesecurity.com/docs/mdm). Available properties are:
+      the `type` property of the [MDM](https://docs.sublime.security/docs/mdm). Available properties are:
       
       - `type.inbound`
       - `type.outbound`

@@ -2,7 +2,7 @@ name: 'Starter 1: Sender attributes & string comparison'
 description: 'Find the inbound message from the sender: "voight-kampff@gmail.com"'
 hints:
   - markdown: |
-      Fields can be extracted from the [Message Data Model](https://docs.sublimesecurity.com/docs/mdm) (MDM) by specifying the field name. To get a subfield, combine two fields together with a `.` in between.
+      Fields can be extracted from the [Message Data Model](https://docs.sublime.security/docs/mdm) (MDM) by specifying the field name. To get a subfield, combine two fields together with a `.` in between.
       
       For example, to retrieve the sender's email address:
     source: |
@@ -14,6 +14,6 @@ hints:
       sender.email.domain.root_domain == "sublimesecurity.com"
 
   - markdown: |
-      The MDM also captures the directionality of email messages using the [`type` property](https://docs.sublimesecurity.com/docs/message-types). For example, an inbound message is a message received from a sender outside your organization's domains:
+      The MDM also captures the directionality of email messages using the [`type` property](https://docs.sublime.security/docs/message-types). For example, an inbound message is a message received from a sender outside your organization's domains:
     source: |
       type.inbound
