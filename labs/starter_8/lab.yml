@@ -1,2 +1,16 @@
-name: 'Starter 8'
+name: 'Starter 8: Detecting inconsistencies'
 description: Find the message where the sender (From) and Return-path are mismatched
+hints:
+  - markdown: |
+      The return path header is available at `headers.return_path`:
+    source: |
+      headers.return_path.email
+  - markdown: |
+      There's a great variety of suspicious inconsistencies you can detect with MQL, like a message only containing a
+      link that doesn't match the sender:
+    source: |
+      length(body.links) == 1
+      and sender.email.domain.root_domain not in $free_email_providers
+      and all(body.links,
+        .href_url.domain.root_domain != sender.email.domain.root_domain
+      )

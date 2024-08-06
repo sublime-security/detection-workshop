@@ -1,2 +1,11 @@
-name: 'Starter 7'
+name: 'Starter 7: Message links & domain attributes'
 description: Find the inbound message with a link to a ".ru" domain
+hints:
+  - markdown: |
+      The [MDM](https://docs.sublime.security/docs/mdm) parses links in the body of a message:
+    source: |
+      any(body.links, .href_url.domain.domain == "sublime.security")
+  - markdown: |
+      Links can also be passed to [enrichment functions](https://docs.sublime.security/docs/enrichment-functions):
+    source: |
+      any(body.links, network.whois(.href_url.domain).days_old <= 14)

@@ -1,2 +1,12 @@
-name: 'Starter 13'
+name: 'Starter 13: Message authentication'
 description: Find the inbound message that is failing DMARC authentication
+hints:
+  - markdown: |
+      Sublime parses the [authentication results](https://docs.sublime.security/docs/how-to-use-message-header-values-in-a-rule)
+      of each mail hop on `headers.hops`:
+    source: |
+      any(headers.hops, .authentication_results.spf == "fail")
+  - markdown: |
+      DMARC results are on `headers.hops[].authentication_results.dmarc`:
+    source: |
+      any(headers.hops, .authentication_results.dmarc =~ "fail")

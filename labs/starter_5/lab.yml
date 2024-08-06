@@ -1,2 +1,8 @@
-name: 'Starter 5'
+name: 'Starter 5: Message headers'
 description: Find the message that uses the "Zimbra" mailer
+hints:
+  - markdown: |
+      The [MDM](https://docs.sublime.security/docs/mdm) also includes rich information about a message's [headers](https://docs.sublime.security/docs/how-to-use-message-header-values-in-a-rule),
+      like the path the message took from source to destination, authentication results, originating mail client, and more:
+    source: |
+      strings.istarts_with(headers.mailer, "FooMailer")

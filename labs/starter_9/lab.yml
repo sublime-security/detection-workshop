@@ -1,2 +1,12 @@
-name: 'Starter 9'
+name: 'Starter 9: Regular expressions'
 description: 'Find the inbound message with a suspicious subject using the following regular expression (case insensitive): "suspicious.*sign.*[io]n"'
+hints:
+  - markdown: |
+      MQL provides [regular expression functions](https://docs.sublime.security/docs/regex-module) which, like
+      string functions, have case-insensitive variants:
+    source: |
+      regex.icontains("no-reply@SublimeSecurity.com", "@(google|sublimesecurity)")
+  - markdown: |
+      If multiple regular expressions are provided, the function only one needs to match one:
+    source: |
+      regex.match("no-reply@example.com", "@.*.org$", "@.*.com$", "@.*.gov$")

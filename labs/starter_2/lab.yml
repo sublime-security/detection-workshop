@@ -1,2 +1,27 @@
-name: 'Starter 2'
+name: 'Starter 2: Attachments & array looping'
 description: 'Find the inbound message with the attachment name: "replicants.txt"'
+hints:
+  - markdown: |
+      Message attachments are available on the `attachments` field of the [MDM](https://docs.sublime.security/docs/mdm),
+      with each attachment in the array containing rich information like the `file_name`, `file_type`, and hashes.
+
+      To process an array and loop over elements, MQL uses a few [builtin functions](https://docs.sublime.security/docs/functions#array-looping-functions).
+      Array functions loop over an input array with an expression and return another array or some other value. Array
+      functions typically take two arguments: the source array, and an expression to evaluate over the elements.
+      
+      Within the looping expression, use the prefix `.` to access the loop item, and use `.<attribute>` to access an
+      attribute of the looping item:
+    source: |
+      any(attachments, .file_extension == "docx")
+
+  - markdown: |
+      You can access attributes multiple levels down:
+    source: |
+      any(recipients.to, .email.domain.domain in $disposable_email_providers)
+
+  - markdown: |
+      You can also create an array by encapsulating a list of values in `[` `]`:
+    source: |
+      any([recipients.to, recipients.cc, recipients.bcc], 
+        any(., .email.domain.domain in $disposable_email_providers)
+      )
