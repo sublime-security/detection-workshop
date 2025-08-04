@@ -1,3 +1,14 @@
+Received: from internal-mx.company.com (internal-mx.company.com [10.0.1.50])
+        by mailbox.company.com (Postfix) with ESMTP id F9E8A123456
+        for <roger.stone@tyrellcorp.com>; Thu, 25 Jul 2024 11:49:45 +0000
+Received: from relay.emailprovider.net (relay.emailprovider.net [198.51.100.75])
+        by internal-mx.company.com (Exim 4.94.2) with ESMTPS id 1sB2cD-0003eF-4G
+        (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=FAIL)
+        for <roger.stone@tyrellcorp.com>; Thu, 25 Jul 2024 11:49:50 +0000
+Received: from smtp.sender.org (smtp.sender.org [203.0.113.25])
+        by relay.emailprovider.net (OpenSMTPD) with ESMTP id A7B9C2D1
+        for <roger.stone@tyrellcorp.com>; Thu, 25 Jul 2024 11:49:55 +0000
+Return-Path: <br@bigmoneyconsultants.com>
 MIME-Version: 1.0
 Date: 25 Jul 24 11:50 UTC
 Subject: Outstanding Invoice #13441
