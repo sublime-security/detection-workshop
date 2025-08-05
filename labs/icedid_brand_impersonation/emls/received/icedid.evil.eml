@@ -1,13 +1,13 @@
 Received: from internal-mx.company.com (internal-mx.company.com [10.0.1.50])
         by mailbox.company.com (Postfix) with ESMTP id F9E8A123456
-        for <bobby.robbins@tyrellcorp.com>>; Wed, 25 Aug 2024 13:59:45 -0400
+        for <bobby.robbins@tyrellcorp.com>; Wed, 25 Aug 2024 13:59:45 -0400
 Received: from relay.emailprovider.net (relay.emailprovider.net [198.51.100.75])
         by internal-mx.company.com (Exim 4.94.2) with ESMTPS id 1sB2cD-0003eF-4G
         (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=FAIL)
-        for <bobby.robbins@tyrellcorp.com>>; Wed, 25 Aug 2024 13:59:50 -0400
+        for <bobby.robbins@tyrellcorp.com>; Wed, 25 Aug 2024 13:59:50 -0400
 Received: from smtp.sender.org (smtp.sender.org [203.0.113.25])
         by relay.emailprovider.net (OpenSMTPD) with ESMTP id A7B9C2D1
-        for <bobby.robbins@tyrellcorp.com>>; Wed, 25 Aug 2024 13:59:55 -0400
+        for <bobby.robbins@tyrellcorp.com>; Wed, 25 Aug 2024 13:59:55 -0400
 Return-Path: <admin@teams-admin.onmicrosoft.com>
 From: "Finance" <admin@teams-admin.onmicrosoft.com>
 To: "Bobby Robbins" <bobby.robbins@tyrellcorp.com>
