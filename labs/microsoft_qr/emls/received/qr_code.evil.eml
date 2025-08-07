@@ -1,3 +1,14 @@
+Received: from internal-mx.company.com (internal-mx.company.com [10.0.1.50])
+        by mailbox.company.com (Postfix) with ESMTP id F9E8A123456
+        for <kenny.suarez@tyrellcorp.com>; Fri, 28 Jul 2024 16:29:05 +0000
+Received: from relay.emailprovider.net (relay.emailprovider.net [198.51.100.75])
+        by internal-mx.company.com (Exim 4.94.2) with ESMTPS id 1sB2cD-0003eF-4G
+        (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=FAIL)
+        for <kenny.suarez@tyrellcorp.com>; Fri, 28 Jul 2024 16:29:10 +0000
+Received: from smtp.sender.org (smtp.sender.org [203.0.113.25])
+        by relay.emailprovider.net (OpenSMTPD) with ESMTP id A7B9C2D1
+        for <kenny.suarez@tyrellcorp.com>; Fri, 28 Jul 2024 16:29:15 +0000
+Return-Path: <tyrellcorp@mfa-settings-secure.onmicrosoft.com>
 From: "Tyrell Corp Exchange Settings" <tyrellcorp@mfa-settings-secure.onmicrosoft.com>
 To: "Kenny Suarez" <kenny.suarez@tyrellcorp.com>
 Subject: MFA Expiry | Tyrell Corp Multi-Factor Auth
